@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IU Studiendokumentation</string>
+    <string name="profile">Profil</string>
+    <string name="f_name">Vorname</string>
+    <string name="l_name">Nachname</string>
+    <string name="study_program">Studiengang</string>
+    <string name="save">Speichern</string>
+</resources>

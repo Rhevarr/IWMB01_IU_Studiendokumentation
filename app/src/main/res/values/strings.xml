@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">IWMB01 IU Studiendokumentation</string>
+    <string name="app_name">IU Study documentation</string>
+    <string name="profile">Profile</string>
+    <string name="f_name">First name</string>
+    <string name="l_name">Last name</string>
+    <string name="study_program">Study program</string>
+    <string name="save">Save</string>
 </resources>
