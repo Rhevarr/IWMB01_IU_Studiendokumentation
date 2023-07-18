@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="white_grey_standard">#F1F2F6</color> <!-- Standard-Hintergrundfarbe der App -->
+    <color name="black_selected">#2C2C2C</color>
 </resources>

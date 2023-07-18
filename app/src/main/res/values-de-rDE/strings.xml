@@ -6,4 +6,5 @@
     <string name="l_name">Nachname</string>
     <string name="study_program">Studiengang</string>
     <string name="save">Speichern</string>
+    <string name="iu_name">Internationale Hochschule</string>
 </resources>
