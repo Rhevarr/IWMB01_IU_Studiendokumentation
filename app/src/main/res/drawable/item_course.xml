@@ -17,12 +17,12 @@
         android:id="@+id/textViewDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:marginTop="10dp"/>
+        android:textSize="8sp"/>
 
     <TextView
         android:id="@+id/textViewSemester"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:marginTop="12dp"/>
+        android:textSize="12sp"/>
 
 </LinearLayout>
