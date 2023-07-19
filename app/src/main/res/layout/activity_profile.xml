@@ -6,31 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <include
+        layout="@layout/toolbar_layout"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:inputType="text"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="108dp" />
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="253dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/l_name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="158dp" />
+        tools:layout_editor_absoluteY="134dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -38,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/study_program"
         tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="234dp" />
+        tools:layout_editor_absoluteY="258dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -46,22 +34,39 @@
         android:layout_height="wrap_content"
         android:text="@string/f_name"
         tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="88dp" />
+        tools:layout_editor_absoluteY="112dp" />
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="369dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:inputType="text"
         tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="180dp" />
+        tools:layout_editor_absoluteY="206dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/l_name"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="376dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="274dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/save"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="599dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
