@@ -14,15 +14,9 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textViewDescription"
+        android:id="@+id/textLearningEffort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="8sp"/>
-
-    <TextView
-        android:id="@+id/textViewSemester"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"/>
 
 </LinearLayout>

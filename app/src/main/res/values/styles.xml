@@ -7,12 +7,13 @@
         <item name="android:windowBackground">@color/light_grey</item>
     </style>
 
-    <style name="StandardButton" parent="Widget.AppCompat.Button">
+    <style name="StandardBlack" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/standard_button</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:padding">8dp</item>
-        <item name="android:fontFamily">@font/sourcesanspro_bold</item> <!-- optional -->
+        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
+        <item name="tint">@color/white</item>
     </style>
 
 </resources>
