@@ -4,7 +4,7 @@
     <string name="f_name">First name</string>
     <string name="l_name">Last name</string>
     <string name="study_program">Study program</string>
-    <string name="save">Save</string>
+    <string name="save_profile">Save profile</string>
     <string name="iu_name">International University of Applied Sciences</string>
     <string name="email">E-Mail</string>
     <string name="my_courses">My courses</string>
@@ -12,4 +12,26 @@
     <string name="course_description">Description</string>
     <string name="course_semester">Semester</string>
     <string name="create_course">Create course</string>
+    <string-array name="semester_numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
 </resources>

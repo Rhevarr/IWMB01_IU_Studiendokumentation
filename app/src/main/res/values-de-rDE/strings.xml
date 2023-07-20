@@ -5,7 +5,6 @@
     <string name="f_name">Vorname</string>
     <string name="l_name">Nachname</string>
     <string name="study_program">Studiengang</string>
-    <string name="save">Speichern</string>
     <string name="iu_name">Internationale Hochschule</string>
     <string name="email">E-Mail</string>
     <string name="my_courses">Meine Kurse</string>
@@ -13,4 +12,5 @@
     <string name="course_description">Beschreibung</string>
     <string name="course_semester">Semester</string>
     <string name="create_course">Kurs erstellen</string>
+    <string name="save_profile">Profil speichern</string>
 </resources>
