@@ -13,4 +13,8 @@
     <string name="course_semester">Semester</string>
     <string name="create_course">Kurs erstellen</string>
     <string name="save_profile">Profil speichern</string>
+    <string name="name_dp">Name: %s</string>
+    <string name="study_program_dp">Studiengang: %s</string>
+    <string name="string_placeholder">%s</string>
+    <string name="my_learning_units">Meine Lerneinheiten</string>
 </resources>

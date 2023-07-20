@@ -34,4 +34,8 @@
         <item>19</item>
         <item>20</item>
     </string-array>
+    <string name="name_dp">Name: %s</string>
+    <string name="study_program_dp">Study program: %s</string>
+    <string name="string_placeholder">%s</string>
+    <string name="my_learning_units">My learning units</string>
 </resources>
