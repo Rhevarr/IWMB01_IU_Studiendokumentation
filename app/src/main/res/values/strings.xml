@@ -7,4 +7,9 @@
     <string name="save">Save</string>
     <string name="iu_name">International University of Applied Sciences</string>
     <string name="email">E-Mail</string>
+    <string name="my_courses">My courses</string>
+    <string name="course_title">Title</string>
+    <string name="course_description">Description</string>
+    <string name="course_semester">Semester</string>
+    <string name="create_course">Create course</string>
 </resources>
