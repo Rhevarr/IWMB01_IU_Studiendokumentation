@@ -8,9 +8,9 @@
     <string name="iu_name">International University of Applied Sciences</string>
     <string name="email">E-Mail</string>
     <string name="my_courses">My courses</string>
-    <string name="course_title">Title</string>
-    <string name="course_description">Description</string>
-    <string name="course_semester">Semester</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="semester">Semester</string>
     <string name="create_course">Create course</string>
     <string-array name="semester_numbers">
         <item>1</item>
@@ -38,4 +38,173 @@
     <string name="study_program_dp">Study program: %s</string>
     <string name="string_placeholder">%s</string>
     <string name="my_learning_units">My learning units</string>
+    <string name="semester_dp">%d. Semester</string>
+    <string name="planned">Planned learning effort</string>
+    <string name="learning_effort_dp">%d:%02d hours learning effort</string>
+    <string-array name="learning_unit_hours">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item>
+        <item>65</item>
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+        <item>69</item>
+        <item>70</item>
+        <item>71</item>
+        <item>72</item>
+        <item>73</item>
+        <item>74</item>
+        <item>75</item>
+        <item>76</item>
+        <item>77</item>
+        <item>78</item>
+        <item>79</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>83</item>
+        <item>84</item>
+        <item>85</item>
+        <item>86</item>
+        <item>87</item>
+        <item>88</item>
+        <item>89</item>
+        <item>90</item>
+        <item>91</item>
+        <item>92</item>
+        <item>93</item>
+        <item>94</item>
+        <item>95</item>
+        <item>96</item>
+        <item>97</item>
+        <item>98</item>
+        <item>99</item>
+    </string-array>
+
+    <string-array name="learning_unit_minutes">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>11</item>
+    <item>12</item>
+    <item>13</item>
+    <item>14</item>
+    <item>15</item>
+    <item>16</item>
+    <item>17</item>
+    <item>18</item>
+    <item>19</item>
+    <item>20</item>
+    <item>21</item>
+    <item>22</item>
+    <item>23</item>
+    <item>24</item>
+    <item>25</item>
+    <item>26</item>
+    <item>27</item>
+    <item>28</item>
+    <item>29</item>
+    <item>30</item>
+    <item>31</item>
+    <item>32</item>
+    <item>33</item>
+    <item>34</item>
+    <item>35</item>
+    <item>36</item>
+    <item>37</item>
+    <item>38</item>
+    <item>39</item>
+    <item>40</item>
+    <item>41</item>
+    <item>42</item>
+    <item>43</item>
+    <item>44</item>
+    <item>45</item>
+    <item>46</item>
+    <item>47</item>
+    <item>48</item>
+    <item>49</item>
+    <item>50</item>
+    <item>51</item>
+    <item>52</item>
+    <item>53</item>
+    <item>54</item>
+    <item>55</item>
+    <item>56</item>
+    <item>57</item>
+    <item>58</item>
+    <item>59</item>
+    </string-array>
+    <string name="learning_effort">Learning effort</string>
+    <string name="colon">:</string>
+    <string name="hours">hours</string>
 </resources>

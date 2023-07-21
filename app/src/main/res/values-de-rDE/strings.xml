@@ -8,13 +8,19 @@
     <string name="iu_name">Internationale Hochschule</string>
     <string name="email">E-Mail</string>
     <string name="my_courses">Meine Kurse</string>
-    <string name="course_title">Titel</string>
-    <string name="course_description">Beschreibung</string>
-    <string name="course_semester">Semester</string>
+    <string name="title">Titel</string>
+    <string name="description">Beschreibung</string>
+    <string name="semester">Semester</string>
     <string name="create_course">Kurs erstellen</string>
     <string name="save_profile">Profil speichern</string>
     <string name="name_dp">Name: %s</string>
     <string name="study_program_dp">Studiengang: %s</string>
     <string name="string_placeholder">%s</string>
     <string name="my_learning_units">Meine Lerneinheiten</string>
+    <string name="semester_dp">%d. Semester</string>
+    <string name="planned">Geplanter Lernaufwand</string>
+    <string name="learning_effort_dp">%d:%02d Stunden Lernaufwand</string>
+    <string name="learning_effort">Lernaufwand</string>
+    <string name="colon">:</string>
+    <string name="hours">Stunden</string>
 </resources>

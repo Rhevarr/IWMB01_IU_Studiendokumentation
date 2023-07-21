@@ -17,7 +17,7 @@
         android:paddingEnd="6dp">
 
         <TextView
-            android:id="@+id/tvCourseTitle"
+            android:id="@+id/textViewCourseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -29,13 +29,13 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvCourseSemester"
+            app:layout_constraintEnd_toStartOf="@+id/textViewCourseSemester"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="%s" />
+            tools:text="@string/string_placeholder" />
 
         <TextView
-            android:id="@+id/tvCourseDescription"
+            android:id="@+id/textViewCourseDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -49,11 +49,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCourseTitle"
-            tools:text="%s" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCourseTitle"
+            tools:text="@string/string_placeholder" />
 
         <TextView
-            android:id="@+id/tvCourseSemester"
+            android:id="@+id/textViewCourseSemester"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
