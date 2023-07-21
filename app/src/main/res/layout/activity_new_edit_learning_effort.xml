@@ -7,6 +7,18 @@
     tools:context=".NewEditLearningUnit">
 
     <ImageButton
+        android:id="@+id/imageButton8"
+        style="@style/StandardButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:srcCompat="@drawable/trashcan_android" />
+
+    <ImageButton
         android:id="@+id/imageButton5"
         style="@style/StandardButton"
         android:layout_width="55dp"
@@ -112,10 +124,9 @@
         style="@style/StandardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/create_learning_unit"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_learning_effort"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberPicker2" />
 

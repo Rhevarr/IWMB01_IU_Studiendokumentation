@@ -28,4 +28,8 @@
     <string name="timestamp">Zeitpunkt</string>
     <string name="change_date">Datum ändern</string>
     <string name="change_time">Uhrzeit ändern</string>
+    <string name="add_learning_effort">Lernaufwand hinzufügen</string>
+    <string name="current_dp">Bisher: %d:%02d Stunden</string>
+    <string name="planned_dp">Geplant: %d:%02d Stunden</string>
+    <string name="date_time_dp">%s um %s</string>
 </resources>

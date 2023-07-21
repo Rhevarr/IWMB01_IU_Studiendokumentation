@@ -212,4 +212,8 @@
     <string name="timestamp">Timestamp</string>
     <string name="change_date">Change date</string>
     <string name="change_time">Change time</string>
+    <string name="add_learning_effort">Add learning effort</string>
+    <string name="current_dp">Current: %d:%02d hours</string>
+    <string name="planned_dp">Planned: %d:%02d hours</string>
+    <string name="date_time_dp">%s at %s</string>
 </resources>

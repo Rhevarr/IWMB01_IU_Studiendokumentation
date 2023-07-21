@@ -25,9 +25,10 @@
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@drawable/trashcan_android" />
 
     <include
         android:id="@+id/include"
@@ -61,11 +62,11 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/string_placeholder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        android:layout_marginEnd="10dp"
+        android:text="@string/semester_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <ImageButton
         android:id="@+id/imageButton"
