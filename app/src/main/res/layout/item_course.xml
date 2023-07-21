@@ -24,11 +24,11 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:ellipsize="end"
-            android:maxWidth="250dp"
             android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@+id/textViewCourseSemester"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,7 +62,8 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="%d. Semester" />
+            tools:text="%d. Semester"
+            app:layout_constrainedWidth="true"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

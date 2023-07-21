@@ -16,7 +16,7 @@
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        app:srcCompat="@drawable/icon_user_96" />
+        app:srcCompat="@drawable/user_icon" />
 
     <include
         android:id="@+id/include"
