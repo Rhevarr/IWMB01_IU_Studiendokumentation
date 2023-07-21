@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".NewEditLearningUnit">
 
+    <ImageButton
+        android:id="@+id/imageButton6"
+        style="@style/StandardButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
@@ -55,7 +67,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
 
     <TextView
         android:id="@+id/textView2"
@@ -72,7 +84,7 @@
         style="@style/StandardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/create_learning_unit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

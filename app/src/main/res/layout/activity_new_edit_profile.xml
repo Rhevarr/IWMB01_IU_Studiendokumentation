@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".NewEditProfile">
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        style="@style/StandardButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <include
         android:id="@+id/include"
@@ -36,7 +48,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/f_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
 
     <EditText
         android:id="@+id/editTextText2"

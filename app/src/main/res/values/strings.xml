@@ -209,4 +209,7 @@
     <string name="hours">hours</string>
     <string name="create_learning_unit">Create learning unit</string>
     <string name="my_learning_efforts">My learning efforts</string>
+    <string name="timestamp">Timestamp</string>
+    <string name="change_date">Change date</string>
+    <string name="change_time">Change time</string>
 </resources>

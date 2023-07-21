@@ -25,4 +25,7 @@
     <string name="hours">Stunden</string>
     <string name="create_learning_unit">Lerneinheit erstellen</string>
     <string name="my_learning_efforts">Meine Lernaufwände</string>
+    <string name="timestamp">Zeitpunkt</string>
+    <string name="change_date">Datum ändern</string>
+    <string name="change_time">Uhrzeit ändern</string>
 </resources>

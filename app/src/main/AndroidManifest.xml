@@ -13,6 +13,9 @@
         android:theme="@style/MainTheme"
         tools:targetApi="31">
         <activity
+            android:name=".NewEditLearningEffort"
+            android:exported="false" />
+        <activity
             android:name=".LearningUnitDetails"
             android:exported="false" />
         <activity
@@ -27,7 +30,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profile"
+            android:name=".NewEditProfile"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
