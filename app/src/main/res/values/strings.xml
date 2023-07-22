@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IU Study documentation</string>
+    <string name="app_name">IU Study Documentation</string>
     <string name="profile">Profile</string>
     <string name="f_name">First name</string>
     <string name="l_name">Last name</string>
@@ -38,4 +38,7 @@
     <string name="deleteButton">Delete</string>
     <string name="changeButton">Change</string>
     <string name="stopwatchButton">Stopwatch</string>
+    <string name="create_profile">Create new profile</string>
+    <string name="welcome_message">Welcome to \n IU Study Documentation!</string>
+    <string name="welcome_message_create_profile">Please create a new profile to proceed.</string>
 </resources>

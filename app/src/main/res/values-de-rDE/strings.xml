@@ -39,4 +39,7 @@
     <string name="deleteButton">Löschen</string>
     <string name="changeButton">Ändern</string>
     <string name="stopwatchButton">Stoppuhr</string>
+    <string name="create_profile">Neues Profil erstellen</string>
+    <string name="welcome_message">Willkommen bei der \n IU Studiendokumentation!</string>
+    <string name="welcome_message_create_profile">Bitte erstelle ein neues Profil, um fortzufahren.</string>
 </resources>

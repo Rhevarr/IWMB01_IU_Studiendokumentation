@@ -7,25 +7,28 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class ProfileDataSource {
         private MyDatabaseHelper myDatabaseHelper;
+        private final Context context;
 
-        public ProfileDataSource(Context context) {
-            myDatabaseHelper = new MyDatabaseHelper(context);
-        }
+    public ProfileDataSource(Context context) {
+        this.context = context;
+        myDatabaseHelper = new MyDatabaseHelper(context);
+    }
 
 
-    // Tabelle und Spaltennamen für die Profile Tabelle
-    private static final String tableProfile = "profile";
-    private static final String columnUserId = "user_id";
-    private static final String columnFirstName = "first_name";
-    private static final String columnLastName = "last_name";
-    private static final String columnStudyProgram = "study_program";
+        // Tabelle und Spaltennamen für die Profile Tabelle
+        private static final String tableProfile = "profile";
+        private static final String columnUserId = "user_id";
+        private static final String columnFirstName = "first_name";
+        private static final String columnLastName = "last_name";
+        private static final String columnStudyProgram = "study_program";
 
-    // SQL-Befehl zum anlegen der Tabelle als String
-    public static final String createTableProfile = "CREATE TABLE " + tableProfile + "("
-            + columnUserId + " INTEGER PRIMARY KEY,"
-            + columnFirstName + " TEXT,"
-            + columnLastName + " TEXT,"
-            + columnStudyProgram + " TEXT" + ")";
+        // SQL-Befehl zum anlegen der Tabelle als String
+        public static final String createTableProfile = "CREATE TABLE " + tableProfile + "("
+                + columnUserId + " INTEGER PRIMARY KEY,"
+                + columnFirstName + " TEXT,"
+                + columnLastName + " TEXT,"
+                + columnStudyProgram + " TEXT" + ")";
+
 
     public void saveProfile(String firstName, String lastName, String studyProgram) {
         SQLiteDatabase db = myDatabaseHelper.getWritableDatabase();
@@ -41,5 +44,12 @@ public class ProfileDataSource {
     public Cursor getProfile() {
         SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + tableProfile,null);
+    }
+    public boolean isProfileCreated() {
+        SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + tableProfile, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
     }
 }

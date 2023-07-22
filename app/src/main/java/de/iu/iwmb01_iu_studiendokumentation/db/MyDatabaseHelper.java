@@ -11,7 +11,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String dbName = "IUStudyDocumentation.db";
     private static final int dbVersion = 1;
 
-
     public MyDatabaseHelper(Context context) {
         super(context, dbName, null, dbVersion);
     }
