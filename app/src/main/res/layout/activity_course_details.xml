@@ -5,7 +5,7 @@
     android:id="@+id/courseListConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CourseDetails">
+    tools:context=".ui.CourseDetails">
 
     <ImageButton
         android:id="@+id/courseDetailsBackButton"

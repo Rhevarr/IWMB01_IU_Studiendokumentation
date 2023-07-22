@@ -5,7 +5,7 @@
     android:id="@+id/learningEffortStopwatchConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewEditProfile">
+    tools:context=".ui.NewEditProfile">
 
     <Button
         android:id="@+id/resetStopwatchButton"

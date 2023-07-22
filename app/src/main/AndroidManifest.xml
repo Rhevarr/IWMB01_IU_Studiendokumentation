@@ -13,31 +13,31 @@
         android:theme="@style/MainTheme"
         tools:targetApi="31">
         <activity
-            android:name=".NewLearningEffortStopwatch"
+            android:name=".ui.NewLearningEffortStopwatch"
             android:exported="false" />
         <activity
-            android:name=".NewEditLearningEffort"
+            android:name=".ui.NewEditLearningEffort"
             android:exported="false" />
         <activity
-            android:name=".LearningUnitDetails"
+            android:name=".ui.LearningUnitDetails"
             android:exported="false" />
         <activity
-            android:name=".NewEditLearningUnit"
+            android:name=".ui.NewEditLearningUnit"
             android:exported="false" />
         <activity
-            android:name=".CourseDetails"
+            android:name=".ui.CourseDetails"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NewEditCourse"
+            android:name=".ui.NewEditCourse"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NewEditProfile"
+            android:name=".ui.NewEditProfile"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CourseList"
+            android:name=".ui.CourseList"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

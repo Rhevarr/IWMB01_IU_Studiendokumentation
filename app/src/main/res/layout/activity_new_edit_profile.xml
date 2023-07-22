@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewEditProfile">
+    tools:context=".ui.NewEditProfile">
 
     <ImageButton
         android:id="@+id/newEditProfileBackButton"
@@ -14,6 +14,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/backButton"
+        android:onClick="backButtonClicked"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -105,33 +106,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameEditText" />
 
-    <TextView
-        android:id="@+id/eMailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:labelFor="@id/eMailEditText"
-        android:text="@string/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studyProgramEditText" />
-
-    <EditText
-        android:id="@+id/eMailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:ellipsize="end"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:maxLength="256"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eMailTextView" />
-
     <Button
         android:id="@+id/newEditProfileButton"
         style="@style/StandardButton"
@@ -141,6 +115,6 @@
         android:text="@string/save_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eMailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/studyProgramEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

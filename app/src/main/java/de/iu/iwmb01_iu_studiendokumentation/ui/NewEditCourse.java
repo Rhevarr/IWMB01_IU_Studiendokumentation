@@ -1,8 +1,10 @@
-package de.iu.iwmb01_iu_studiendokumentation;
+package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import de.iu.iwmb01_iu_studiendokumentation.R;
 
 public class NewEditCourse extends AppCompatActivity {
 
