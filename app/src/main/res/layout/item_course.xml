@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemCourseCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
@@ -9,6 +10,7 @@
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemCourseConstraintView"
         style="@style/StandardItem"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -17,7 +19,7 @@
         android:paddingEnd="6dp">
 
         <TextView
-            android:id="@+id/textViewCourseTitle"
+            android:id="@+id/itemCourseTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -29,13 +31,13 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toStartOf="@+id/textViewCourseSemester"
+            app:layout_constraintEnd_toStartOf="@+id/itemCourseSemesterTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/string_placeholder" />
 
         <TextView
-            android:id="@+id/textViewCourseDescription"
+            android:id="@+id/itemCourseDescriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -49,21 +51,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCourseTitle"
+            app:layout_constraintTop_toBottomOf="@+id/itemCourseTitleTextView"
             tools:text="@string/string_placeholder" />
 
         <TextView
-            android:id="@+id/textViewCourseSemester"
+            android:id="@+id/itemCourseSemesterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="%d. Semester"
-            app:layout_constrainedWidth="true"/>
+            tools:text="%d. Semester" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

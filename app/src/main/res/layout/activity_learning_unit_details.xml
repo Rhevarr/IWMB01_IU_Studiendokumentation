@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/learningUnitDetailsConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CourseDetails">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/stopwatchActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -19,13 +20,13 @@
         android:scaleType="centerCrop"
         android:tint="@color/white"
         app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton2"
+        app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/createLearningEffortActionButton"
         app:maxImageSize="30dp"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/learnungUnitDetailsBackButton"
         style="@style/StandardButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -33,11 +34,11 @@
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/deleteLearningUnit"
         style="@style/StandardButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -45,11 +46,11 @@
         android:layout_marginEnd="10dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="@drawable/trashcan_android" />
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/toolbarInclude"
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -57,48 +58,48 @@
         tools:layout_editor_absoluteX="-202dp" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/learningEffortPlannedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/planned_dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleTextView" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/learningEffortCurrentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/current_dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/learningUnitTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/string_placeholder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/learnungUnitDetailsBackButton" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/changeLearningUnitButton"
         style="@style/StandardButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintEnd_toStartOf="@+id/deleteLearningUnit"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/learningUnitDetailsBottomConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
@@ -110,9 +111,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/learningUnitDetailsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -132,18 +134,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/myLearningEffortsTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
         android:text="@string/my_learning_efforts"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/createLearningEffortActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -155,7 +157,7 @@
         android:scaleType="centerCrop"
         android:tint="@color/white"
         app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:srcCompat="@android:drawable/ic_input_add" />
