@@ -35,4 +35,8 @@
     <string name="start_timer">Start</string>
     <string name="stop_timer">Stopp</string>
     <string name="reset_timer">Löschen</string>
+    <string name="backButton">Zurück</string>
+    <string name="deleteButton">Löschen</string>
+    <string name="changeButton">Ändern</string>
+    <string name="stopwatchButton">Stoppuhr</string>
 </resources>

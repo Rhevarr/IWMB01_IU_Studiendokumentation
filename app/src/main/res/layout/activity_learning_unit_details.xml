@@ -15,7 +15,7 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/standard_button"
         android:clickable="true"
-        android:contentDescription="@string/create_course"
+        android:contentDescription="@string/stopwatchButton"
         android:focusable="true"
         android:scaleType="centerCrop"
         android:tint="@color/white"
@@ -26,12 +26,13 @@
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
     <ImageButton
-        android:id="@+id/learnungUnitDetailsBackButton"
+        android:id="@+id/learningUnitDetailsBackButton"
         style="@style/StandardButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/backButton"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -44,6 +45,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="@string/deleteButton"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -85,7 +87,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/string_placeholder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learnungUnitDetailsBackButton" />
+        app:layout_constraintTop_toBottomOf="@+id/learningUnitDetailsBackButton" />
 
     <ImageButton
         android:id="@+id/changeLearningUnitButton"
@@ -94,6 +96,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="@string/changeButton"
         app:layout_constraintEnd_toStartOf="@+id/deleteLearningUnit"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="@android:drawable/ic_popup_sync" />

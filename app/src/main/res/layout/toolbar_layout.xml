@@ -23,7 +23,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        android:contentDescription="IU Logo"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +33,7 @@
 
     <TextView
         android:id="@+id/iuTitleTextView"
-        android:layout_width="268dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:fontFamily="@font/opensans_regular"
