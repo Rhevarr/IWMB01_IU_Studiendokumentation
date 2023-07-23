@@ -5,8 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
+
 public class ProfileDataSource {
+
+        private SQLiteDatabase db;
         private MyDatabaseHelper myDatabaseHelper;
+        private Cursor cursor;
         private final Context context;
 
     public ProfileDataSource(Context context) {
@@ -31,25 +36,52 @@ public class ProfileDataSource {
 
 
     public void saveProfile(String firstName, String lastName, String studyProgram) {
-        SQLiteDatabase db = myDatabaseHelper.getWritableDatabase();
+        db = myDatabaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(columnFirstName, firstName);
         values.put(columnLastName, lastName);
         values.put(columnStudyProgram, studyProgram);
         db.insert(tableProfile, null, values);
-        db.close();
     }
 
-    public Cursor getProfile() {
-        SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + tableProfile,null);
+    public static Profile cursorToProfile(Cursor cursor) {
+        if (cursor != null && cursor.moveToFirst()) {
+
+            int firstNameIndex = cursor.getColumnIndex(columnFirstName);
+            int lastNameIndex = cursor.getColumnIndex(columnLastName);
+            int studyProgramIndex = cursor.getColumnIndex(columnStudyProgram);
+
+            // cursor.getString verlangt, dass geprüft wird, dass der Index nicht -1 entspricht.
+            // Stattdessen könnte man den Index auch statisch setzen, da nur ein Profil existieren sollte, jedoch wäre dies eine unschöne Lösung.
+            if (firstNameIndex == -1 || lastNameIndex == -1 || studyProgramIndex == -1) {
+                return null;
+            }
+
+            String firstName = cursor.getString(firstNameIndex);
+            String lastName = cursor.getString(lastNameIndex);
+            String studyProgram = cursor.getString(studyProgramIndex);
+
+            return new Profile(firstName, lastName, studyProgram);
+        }
+        return null;
+    }
+
+
+    public Profile getProfile() {
+        db = myDatabaseHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM " + tableProfile,null);
+        return cursorToProfile(cursor);
     }
     public boolean isProfileCreated() {
-        SQLiteDatabase db = myDatabaseHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + tableProfile, null);
+        db = myDatabaseHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM " + tableProfile, null);
         int count = cursor.getCount();
-        cursor.close();
         return count > 0;
+    }
+    public void close() {
+        cursor.close();
+        myDatabaseHelper.close();
+        db.close();
     }
 }

@@ -1,5 +1,9 @@
 package de.iu.iwmb01_iu_studiendokumentation.model;
 
+import android.database.Cursor;
+
+import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
+
 public class Profile {
 
     private String firstName;
