@@ -15,7 +15,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditProfile extends AppCompatActivity {
 
-    private ProfileDataSource profileDataSource = new ProfileDataSource(this);
+    private final ProfileDataSource profileDataSource = new ProfileDataSource(this);
     private String mode;
 
     private Profile profile;

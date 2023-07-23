@@ -7,11 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.List;
-
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.CoursesDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.db.MyDatabaseHelper;
 import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
@@ -22,9 +19,6 @@ public class CourseList extends AppCompatActivity {
     private CoursesDataSource coursesDataSource;
 
     private Profile profile;
-
-    private TextView userFullNameTextView;
-    private TextView userStudyProgramTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +44,12 @@ public class CourseList extends AppCompatActivity {
         super.onResume();
 
         profile = profileDataSource.getProfile();
-        
-        userFullNameTextView= findViewById(R.id.userFullNameTextView);
-        userStudyProgramTextView = findViewById((R.id.userStudyProgramTextView));
 
-        userFullNameTextView.setText(profile.getFirstName() + " " + profile.getLastName());
+        TextView userFullNameTextView = findViewById(R.id.userFullNameTextView);
+        TextView userStudyProgramTextView = findViewById((R.id.userStudyProgramTextView));
+
+        String fullName = profile.getFirstName() + " " + profile.getLastName();
+        userFullNameTextView.setText(fullName);
         userStudyProgramTextView.setText(profile.getStudyProgram());
   //      List<Course> courses = coursesDataSource.getAllCourses();
 

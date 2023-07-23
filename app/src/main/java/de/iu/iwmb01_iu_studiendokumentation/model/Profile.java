@@ -1,12 +1,11 @@
 package de.iu.iwmb01_iu_studiendokumentation.model;
 
-import android.database.Cursor;
 
-import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
+
 
 public class Profile {
 
-    private long profileID;
+    private final long profileID;
     private String firstName;
     private String lastName;
     private String studyProgram;
