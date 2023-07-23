@@ -42,4 +42,7 @@
     <string name="create_profile">Neues Profil erstellen</string>
     <string name="welcome_message">Willkommen bei der \n IU Studiendokumentation!</string>
     <string name="welcome_message_create_profile">Bitte erstelle ein neues Profil, um fortzufahren.</string>
+    <string name="toast_error_edittexts_empty">Bitte fülle alle Felder aus.</string>
+    <string name="toast_new_profile">Dein Profil wurde erfolgreich erstellt!</string>
+    <string name="toast_edit_profile">Dein Profil wurde erfolgreich geändert!</string>
 </resources>

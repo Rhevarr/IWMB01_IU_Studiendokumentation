@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,8 +21,15 @@ public class CourseList extends AppCompatActivity {
     private ProfileDataSource profileDataSource;
     private CoursesDataSource coursesDataSource;
 
+    private Profile profile;
+
+    private TextView userFullNameTextView;
+    private TextView userStudyProgramTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         profileDataSource = new ProfileDataSource(this);
    //     coursesDataSource = new CoursesDataSource(this);
 
@@ -31,7 +39,6 @@ public class CourseList extends AppCompatActivity {
             startActivity(intent);
             finish(); // Beenden der aktuellen Activity, damit der Benutzer nicht zurückkehren kann
         } else {
-            super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_course_list);
 
         }
@@ -42,7 +49,13 @@ public class CourseList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Profile profile = profileDataSource.getProfile();
+        profile = profileDataSource.getProfile();
+        
+        userFullNameTextView= findViewById(R.id.userFullNameTextView);
+        userStudyProgramTextView = findViewById((R.id.userStudyProgramTextView));
+
+        userFullNameTextView.setText(profile.getFirstName() + " " + profile.getLastName());
+        userStudyProgramTextView.setText(profile.getStudyProgram());
   //      List<Course> courses = coursesDataSource.getAllCourses();
 
         // Hier können Sie die Daten in Ihren UI-Elementen anzeigen
@@ -55,11 +68,10 @@ public class CourseList extends AppCompatActivity {
         super.onDestroy();
     }
 
-
-
     public void profileButtonClicked(View view) {
         Intent intent = new Intent(this, NewEditProfile.class);
         intent.putExtra("MODE", "EDIT");
+        intent.putExtra("PROFILE_ID", profile.getProfileID());
         startActivity(intent);
     }
 }

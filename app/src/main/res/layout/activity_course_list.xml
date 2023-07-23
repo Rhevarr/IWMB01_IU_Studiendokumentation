@@ -17,6 +17,7 @@
         android:contentDescription="@string/profile"
         android:onClick="profileButtonClicked"
         android:scaleType="centerInside"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="@drawable/user_icon" />
@@ -93,23 +94,33 @@
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
-        android:id="@+id/userNameTextView"
-        android:layout_width="wrap_content"
+        android:id="@+id/userFullNameTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/name_dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/string_placeholder"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/changeProfileButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude" />
 
     <TextView
         android:id="@+id/userStudyProgramTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/study_program_dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/string_placeholder"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/changeProfileButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/userFullNameTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
