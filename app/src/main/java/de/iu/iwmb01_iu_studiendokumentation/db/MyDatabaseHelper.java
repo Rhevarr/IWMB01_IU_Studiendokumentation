@@ -1,8 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.db;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -19,6 +17,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(ProfileDataSource.createTableProfile);
+        db.execSQL(CourseDataSource.createTableCourse);
     }
 
     @Override

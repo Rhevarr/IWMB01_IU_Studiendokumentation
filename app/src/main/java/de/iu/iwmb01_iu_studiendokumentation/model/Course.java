@@ -1,28 +1,32 @@
 package de.iu.iwmb01_iu_studiendokumentation.model;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Course {
-
-    private final long courseId;
-    private final LocalDateTime creationDate;
+    private final int courseId;
+    private final Date creationDate;
     private String courseTitle;
     private String courseDescription;
-    private String courseSemester;
+    private int courseSemester;
 
-    public Course(long courseId, LocalDateTime creationDate, String courseTitle, String courseDescription, String courseSemester) {
+    private List<LearningUnit> learningUnits;
+
+    public Course(int courseId, Date creationDate, String courseTitle, String courseDescription, int courseSemester) {
         this.courseId = courseId;
         this.creationDate = creationDate;
         this.courseTitle = courseTitle;
         this.courseDescription = courseDescription;
         this.courseSemester = courseSemester;
+        this.learningUnits = new ArrayList<LearningUnit>();
     }
 
-    public long getCourseId() {
+    public int getCourseId() {
         return courseId;
     }
 
-    public LocalDateTime getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
@@ -42,12 +46,20 @@ public class Course {
         this.courseDescription = courseDescription;
     }
 
-    public String getCourseSemester() {
+    public int getCourseSemester() {
         return courseSemester;
     }
 
-    public void setCourseSemester(String courseSemester) {
+    public void setCourseSemester(int courseSemester) {
         this.courseSemester = courseSemester;
+    }
+
+    public List<LearningUnit> getLearningUnits() {
+        return learningUnits;
+    }
+
+    public void setLearningUnits(List<LearningUnit> learningUnits) {
+        this.learningUnits = learningUnits;
     }
 
 }

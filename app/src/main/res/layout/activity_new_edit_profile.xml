@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="saveProfileButtonClicked"
-        android:text="@string/save_profile"
+        android:text="@string/create_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studyProgramEditText" />

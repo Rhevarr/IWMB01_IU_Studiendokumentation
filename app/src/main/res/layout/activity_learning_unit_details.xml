@@ -21,7 +21,7 @@
         android:tint="@color/white"
         app:backgroundTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/createLearningEffortActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/createLearningEffortImageButton"
         app:maxImageSize="30dp"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
@@ -147,22 +147,23 @@
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/createLearningEffortActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/createLearningEffortImageButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/standard_button"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:contentDescription="@string/create_course"
         android:focusable="true"
-        android:scaleType="centerCrop"
-        android:tint="@color/white"
+        android:onClick="addCourseButtonClicked"
+        android:scaleType="center"
         app:backgroundTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

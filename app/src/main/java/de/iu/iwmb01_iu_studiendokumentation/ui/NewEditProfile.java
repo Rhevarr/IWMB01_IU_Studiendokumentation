@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ public class NewEditProfile extends AppCompatActivity {
     private EditText lastNameEditText;
     private EditText studyProgramEditText;
 
-    private long profileId;
+    private int profileId;
     private String firstName;
     private String lastName;
     private String studyProgram;
@@ -41,7 +42,11 @@ public class NewEditProfile extends AppCompatActivity {
         studyProgramEditText = findViewById((R.id.studyProgramEditText));
 
     if(mode.equals("EDIT")) {
-        profileId = getIntent().getLongExtra("PROFILE_ID", - 1);
+
+        Button newEditProfileButton = findViewById(R.id.newEditProfileButton);
+        newEditProfileButton.setText(R.string.save_profile);
+
+        profileId = getIntent().getIntExtra("PROFILE_ID", - 1);
         profile = profileDataSource.getProfile(profileId);
 
         firstNameEditText.setText(profile.getFirstName());
@@ -57,7 +62,7 @@ public class NewEditProfile extends AppCompatActivity {
 
 public void saveProfileButtonClicked(View view) {
 
-        if(areEditTextsEmpty()) {
+        if(areFieldsEmpty()) {
             String message = getResources().getString(R.string.toast_error_edittexts_empty);
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         } else {
@@ -96,7 +101,7 @@ private void editSaveProfile() {
         finish();
 }
 
-private boolean areEditTextsEmpty() {
+private boolean areFieldsEmpty() {
         return TextUtils.isEmpty(firstNameEditText.getText().toString().trim())
                 || TextUtils.isEmpty(lastNameEditText.getText().toString().trim())
                 || TextUtils.isEmpty(studyProgramEditText.getText().toString().trim());

@@ -18,7 +18,7 @@ public class ProfileDataSource {
     }
 
 
-        // Tabelle und Spaltennamen für die Profile Tabelle
+        // Tabellen und Spaltennamen für die Profile-Tabelle
         private static final String tableProfile = "profile";
         private static final String columnProfileID = "user_id";
         private static final String columnFirstName = "first_name";
@@ -57,7 +57,7 @@ public class ProfileDataSource {
                 return null;
             }
 
-            long profileID = cursor.getLong(profileIDIndex);
+            int profileID = cursor.getInt(profileIDIndex);
             String firstName = cursor.getString(firstNameIndex);
             String lastName = cursor.getString(lastNameIndex);
             String studyProgram = cursor.getString(studyProgramIndex);
@@ -75,7 +75,7 @@ public class ProfileDataSource {
         values.put(columnLastName, profile.getLastName());
         values.put(columnStudyProgram, profile.getStudyProgram());
 
-        db.update(tableProfile, values, columnProfileID + " = ?", new String[] {Long.toString(profile.getProfileID())});
+        db.update(tableProfile, values, columnProfileID + " = ?", new String[] {Integer.toString(profile.getProfileID())});
     }
 
     public Profile getProfile() {
@@ -84,7 +84,7 @@ public class ProfileDataSource {
         return cursorToProfile(cursor);
     }
 
-    public Profile getProfile(long profileId) {
+    public Profile getProfile(int profileId) {
         db = myDatabaseHelper.getReadableDatabase();
         cursor = db.rawQuery("SELECT * FROM " + tableProfile + " WHERE " + columnProfileID +" = " + profileId,null);
         return cursorToProfile(cursor);

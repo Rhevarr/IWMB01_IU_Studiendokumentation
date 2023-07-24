@@ -5,19 +5,19 @@ package de.iu.iwmb01_iu_studiendokumentation.model;
 
 public class Profile {
 
-    private final long profileID;
+    private final int profileID;
     private String firstName;
     private String lastName;
     private String studyProgram;
 
-    public Profile(long profileID, String firstName, String lastName, String studyProgram) {
+    public Profile(int profileID, String firstName, String lastName, String studyProgram) {
         this.profileID = profileID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.studyProgram = studyProgram;
     }
 
-    public long getProfileID() {
+    public int getProfileID() {
         return profileID;
     }
     public String getFirstName() {
