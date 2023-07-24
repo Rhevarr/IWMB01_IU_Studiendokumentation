@@ -17,8 +17,8 @@ import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class CourseList extends AppCompatActivity {
 
-    private ProfileDataSource profileDataSource = new ProfileDataSource(this);
-    private CourseDataSource coursesDataSource = new CourseDataSource(this);
+    private final ProfileDataSource profileDataSource = new ProfileDataSource(this);
+    private final CourseDataSource coursesDataSource = new CourseDataSource(this);
 
     private Profile profile;
 
