@@ -1,6 +1,8 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
+import de.iu.iwmb01_iu_studiendokumentation.adapter.CourseAdapter;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
@@ -27,17 +30,28 @@ public class CourseList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_course_list);
 
         if (!profileDataSource.isProfileCreated()) {
             // Wenn noch kein Profil erstellt wurde, startet stattdessen die WelcomeActivity
-            Intent intent = new Intent(this, Welcome.class);
-            startActivity(intent);
-            finish(); // Beenden der aktuellen Activity, damit der Benutzer nicht zurückkehren kann
+            goToWelcomeActivity();
         } else {
-            setContentView(R.layout.activity_course_list);
-
         }
 
+    }
+
+    private void initializeRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.courseListRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        CourseAdapter adapter = new CourseAdapter(courses);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void goToWelcomeActivity() {
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
+        finish(); // Beenden der aktuellen Activity, damit der Benutzer nicht zurückkehren kann
     }
 
     @Override
@@ -46,7 +60,8 @@ public class CourseList extends AppCompatActivity {
 
         setProfileTextViews();
 
-        courses = coursesDataSource.getAllCourses();
+       courses = coursesDataSource.getAllCourses();
+       initializeRecyclerView();
 
         // Hier können Sie die Daten in Ihren UI-Elementen anzeigen
     }

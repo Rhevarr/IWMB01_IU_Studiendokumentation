@@ -7,12 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
-import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class CourseDataSource {
 
@@ -71,7 +69,7 @@ public class CourseDataSource {
         Course course;
 
             db = myDatabaseHelper.getReadableDatabase();
-            cursor = db.rawQuery("SELECT * FROM " + tableCourse + columnCourseId +" = " + courseId,null);
+            cursor = db.rawQuery("SELECT * FROM " + tableCourse + " WHERE " + columnCourseId +" = " + courseId,null);
 
             course = cursorToCourse(cursor);
             close();
@@ -79,7 +77,7 @@ public class CourseDataSource {
         }
 
     private static Course cursorToCourse(Cursor cursor) {
-        if (cursor != null && cursor.moveToFirst()) {
+        if (cursor != null) {
 
             int courseIDIndex = cursor.getColumnIndexOrThrow(columnCourseId);
             int creationDateIndex = cursor.getColumnIndex(columnCreationDate);

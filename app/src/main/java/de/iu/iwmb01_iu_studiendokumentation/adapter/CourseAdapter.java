@@ -1,8 +1,10 @@
 package de.iu.iwmb01_iu_studiendokumentation.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.ui.CourseDetails;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
@@ -32,9 +35,25 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     @Override
     public void onBindViewHolder(@NonNull CourseAdapter.CourseViewHolder holder, int position) {
         Course course = courses.get(position);
+        holder.titleTextView.setText(course.getCourseTitle());
+        holder.descriptionTextView.setText(course.getCourseDescription());
 
+        String semesterText = String.format(holder.itemView.getContext().getString(R.string.semester_dp), course.getCourseSemester());
+        holder.semesterTextView.setText(semesterText);
+
+        // Der OnClickListener funktioniert so wie das onClick-Attribut bei den Buttons.
+        // Hierbei beziehe ich mich jedoch auf die ImageView innerhalb des Items.
+        holder.courseDetailsImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), CourseDetails.class);
+                intent.putExtra("COURSE_ID", course.getCourseId());
+                view.getContext().startActivity(intent);
+
+            }
+        });
     }
-
 
     @Override
     public int getItemCount() {
@@ -44,6 +63,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         private final TextView titleTextView;
         private final TextView descriptionTextView;
         private final TextView semesterTextView;
+        private final ImageView courseDetailsImageView;
 
         public CourseViewHolder(View view) {
             super(view);
@@ -51,6 +71,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             titleTextView =  view.findViewById(R.id.itemCourseTitleTextView);
             descriptionTextView = view.findViewById(R.id.itemCourseDescriptionTextView);
             semesterTextView = view.findViewById(R.id.itemCourseSemesterTextView);
+            courseDetailsImageView = view.findViewById(R.id.itemCourseDetailsImageView);
         }
     }
 }
