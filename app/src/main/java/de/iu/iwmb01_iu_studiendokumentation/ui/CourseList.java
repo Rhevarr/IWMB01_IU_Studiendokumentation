@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
@@ -22,7 +22,7 @@ public class CourseList extends AppCompatActivity {
 
     private Profile profile;
 
-    private List<Course> courses;
+    private ArrayList<Course> courses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -48,19 +48,37 @@ public class CourseDataSource {
         values.put(columnDescription, description);
         values.put(columnSemester, semester);
         db.insert(tableCourse, null, values);
+        close();
     }
 
     public ArrayList<Course> getAllCourses() {
-        return null;
+        ArrayList<Course> courses = new ArrayList<>();
+
+        db = myDatabaseHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM " + tableCourse,null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Course course = cursorToCourse(cursor);
+                courses.add(course);
+            } while (cursor.moveToNext());
+        }
+        close();
+        return courses;
     }
 
     public Course getCourse(int courseId) {
+        Course course;
+
             db = myDatabaseHelper.getReadableDatabase();
             cursor = db.rawQuery("SELECT * FROM " + tableCourse + columnCourseId +" = " + courseId,null);
-            return cursorToCourse(cursor);
+
+            course = cursorToCourse(cursor);
+            close();
+            return course;
         }
 
-    public static Course cursorToCourse(Cursor cursor) {
+    private static Course cursorToCourse(Cursor cursor) {
         if (cursor != null && cursor.moveToFirst()) {
 
             int courseIDIndex = cursor.getColumnIndexOrThrow(columnCourseId);
@@ -90,6 +108,26 @@ public class CourseDataSource {
     }
 
     public void updateCourse(Course course) {
+        db = myDatabaseHelper.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(columnTitle, course.getCourseTitle());
+        values.put(columnDescription, course.getCourseDescription());
+        values.put(columnSemester, course.getCourseSemester());
+
+        db.update(tableCourse, values, columnCourseId + " = ?", new String[] {Integer.toString(course.getCourseId())});
+        close();
+    }
+
+    public void close() {
+        if(cursor != null) {
+            cursor.close();
+        }
+        if(myDatabaseHelper != null) {
+            myDatabaseHelper.close();
+        }
+        if(db != null) {
+            db.close();
+        }
     }
 }

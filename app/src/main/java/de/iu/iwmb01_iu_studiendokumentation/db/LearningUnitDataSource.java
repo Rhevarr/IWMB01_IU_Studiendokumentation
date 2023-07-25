@@ -1,12 +1,12 @@
 package de.iu.iwmb01_iu_studiendokumentation.db;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class LearningUnitDataSource {
 
-    public List<LearningUnit> getLearningUnitsForCourse(int courseId) {
+    public ArrayList<LearningUnit> getLearningUnitsForCourse(int courseId) {
         return null;
     }
 

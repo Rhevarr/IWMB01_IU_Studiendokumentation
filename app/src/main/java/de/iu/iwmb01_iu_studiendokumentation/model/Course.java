@@ -2,7 +2,7 @@ package de.iu.iwmb01_iu_studiendokumentation.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Course {
     private final int courseId;
@@ -11,7 +11,7 @@ public class Course {
     private String courseDescription;
     private int courseSemester;
 
-    private List<LearningUnit> learningUnits;
+    private ArrayList<LearningUnit> learningUnits;
 
     public Course(int courseId, Date creationDate, String courseTitle, String courseDescription, int courseSemester) {
         this.courseId = courseId;
@@ -54,11 +54,11 @@ public class Course {
         this.courseSemester = courseSemester;
     }
 
-    public List<LearningUnit> getLearningUnits() {
+    public ArrayList<LearningUnit> getLearningUnits() {
         return learningUnits;
     }
 
-    public void setLearningUnits(List<LearningUnit> learningUnits) {
+    public void setLearningUnits(ArrayList<LearningUnit> learningUnits) {
         this.learningUnits = learningUnits;
     }
 

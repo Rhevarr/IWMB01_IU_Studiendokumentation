@@ -41,9 +41,10 @@ public class ProfileDataSource {
         values.put(columnLastName, lastName);
         values.put(columnStudyProgram, studyProgram);
         db.insert(tableProfile, null, values);
+        close();
     }
 
-    public static Profile cursorToProfile(Cursor cursor) {
+    private Profile cursorToProfile(Cursor cursor) {
         if (cursor != null && cursor.moveToFirst()) {
 
             int profileIDIndex = cursor.getColumnIndexOrThrow(columnProfileID);
@@ -76,24 +77,37 @@ public class ProfileDataSource {
         values.put(columnStudyProgram, profile.getStudyProgram());
 
         db.update(tableProfile, values, columnProfileID + " = ?", new String[] {Integer.toString(profile.getProfileID())});
+        close();
     }
 
     public Profile getProfile() {
+        Profile profile;
+
         db = myDatabaseHelper.getReadableDatabase();
         cursor = db.rawQuery("SELECT * FROM " + tableProfile,null);
-        return cursorToProfile(cursor);
+
+        profile = cursorToProfile(cursor);
+        close();
+        return profile;
+
     }
 
     public Profile getProfile(int profileId) {
+        Profile profile;
+
         db = myDatabaseHelper.getReadableDatabase();
         cursor = db.rawQuery("SELECT * FROM " + tableProfile + " WHERE " + columnProfileID +" = " + profileId,null);
-        return cursorToProfile(cursor);
+
+        profile = cursorToProfile(cursor);
+        close();
+        return profile;
     }
 
     public boolean isProfileCreated() {
         db = myDatabaseHelper.getReadableDatabase();
         cursor = db.rawQuery("SELECT * FROM " + tableProfile, null);
         int count = cursor.getCount();
+        close();
         return count > 0;
     }
     public void close() {
