@@ -35,7 +35,6 @@ public class CourseList extends AppCompatActivity {
         if (!profileDataSource.isProfileCreated()) {
             // Wenn noch kein Profil erstellt wurde, startet stattdessen die WelcomeActivity
             goToWelcomeActivity();
-        } else {
         }
 
     }
@@ -62,15 +61,13 @@ public class CourseList extends AppCompatActivity {
 
        courses = coursesDataSource.getAllCourses();
        initializeRecyclerView();
-
-        // Hier können Sie die Daten in Ihren UI-Elementen anzeigen
     }
 
     @Override
     protected void onDestroy() {
 
         profileDataSource.close();
-//        coursesDataSource.close();
+        coursesDataSource.close();
         super.onDestroy();
     }
 
@@ -91,10 +88,10 @@ public class CourseList extends AppCompatActivity {
         profile = profileDataSource.getProfile();
 
         TextView userFullNameTextView = findViewById(R.id.userFullNameTextView);
-        TextView userStudyProgramTextView = findViewById((R.id.userStudyProgramTextView));
+        TextView userStudyProgramTextView = findViewById(R.id.userStudyProgramTextView);
 
         String fullName = profile.getFirstName() + " " + profile.getLastName();
-        userFullNameTextView.setText(fullName);
-        userStudyProgramTextView.setText(profile.getStudyProgram());
+        userFullNameTextView.setText(this.getString(R.string.name_dp, fullName));
+        userStudyProgramTextView.setText(this.getString(R.string.study_program_dp, profile.getStudyProgram()));
     }
 }

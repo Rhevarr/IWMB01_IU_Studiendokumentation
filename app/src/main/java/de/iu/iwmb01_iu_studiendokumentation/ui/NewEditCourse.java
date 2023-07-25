@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class NewEditCourse extends AppCompatActivity {
     private String courseTitle;
     private String courseDescription;
     private int courseSemester;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

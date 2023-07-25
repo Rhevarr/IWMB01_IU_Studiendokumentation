@@ -19,7 +19,7 @@
     <string name="my_learning_units">Meine Lerneinheiten</string>
     <string name="semester_dp">%d. Semester</string>
     <string name="planned">Geplanter Lernaufwand</string>
-    <string name="learning_effort_dp">%d:%02d Stunden Lernaufwand</string>
+    <string name="learning_effort_time_dp">%d:%02d Stunden Lernaufwand</string>
     <string name="learning_effort">Lernaufwand</string>
     <string name="colon">:</string>
     <string name="hours">Stunden</string>
@@ -51,4 +51,7 @@
     <string name="save_course">Kurs speichern</string>
     <string name="save_learning_unit">Lerneinheit speichern</string>
     <string name="save_learning_effort">Lernaufwand speichern</string>
+    <string name="description_dp">Beschreibung: %s</string>
+    <string name="course_dp">Kurs: %s</string>
+    <string name="learning_unit_dp">Lerneinheit: %s</string>
 </resources>

@@ -29,7 +29,7 @@
             android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@+id/itemCourseSemesterTextView"
@@ -48,7 +48,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/itemCourseDetailsImageView"
@@ -63,7 +63,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -76,7 +76,7 @@
             android:layout_marginEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemCourseSemesterTextView"
             app:srcCompat="@drawable/arrow_right" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
