@@ -142,7 +142,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
         android:text="@string/my_learning_units"
-        android:textSize="28sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/courseDetailsBottomConstraintLayout"
         app:layout_constraintStart_toStartOf="parent" />
 

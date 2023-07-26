@@ -1,14 +1,17 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -68,55 +71,63 @@ public class CourseList extends AppCompatActivity {
 
        courses = coursesDataSource.getAllCourses();
        initializeRecyclerView();
-       initializeSpinner();
+       initializeSortButton();
     }
 
-    private void initializeSpinner() {
-        Spinner sortSpinner = findViewById(R.id.courseListSortSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_options_course, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sortSpinner.setAdapter(adapter);
+    private void initializeSortButton() {
 
-        // Sortierfunktion. Case 0 - X je nach Reihenfolge des String-Arrays aus der strings.xml
-        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ImageButton sortButton = findViewById(R.id.sortCurseItemImageButton);
+        sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                switch (position) {
-                    case 0: // By CreationDate
-                        Collections.sort(courses, new Comparator<Course>() {
-                            @Override
-                            public int compare(Course c1, Course c2) {
-                                return c1.getCreationDate().compareTo(c2.getCreationDate());
-                            }
-                        });
-                        break;
-                    case 1: // By Title
-                        Collections.sort(courses, new Comparator<Course>() {
-                            @Override
-                            public int compare(Course c1, Course c2) {
-                                return c1.getCourseTitle().compareTo(c2.getCourseTitle());
-                            }
-                        });
-                        break;
-                    case 2: // By Semester
-                        Collections.sort(courses, new Comparator<Course>() {
-                            @Override
-                            public int compare(Course c1, Course c2) {
-                                return Integer.compare(c1.getCourseSemester(), c2.getCourseSemester());
-                            }
-                        });
-                        break;
-                }
-                courseAdapter.notifyDataSetChanged();
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(CourseList.this, sortButton);
+                popupMenu.getMenuInflater().inflate(R.menu.sort_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    final int optionDate = R.id.option_date;
+                    final int optionTitle = R.id.option_title;
+                    final int optionSemester = R.id.option_semester;
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int itemId = item.getItemId();
+
+                        if (itemId == optionDate) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return c1.getCreationDate().compareTo(c2.getCreationDate());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else if(itemId == optionTitle) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return c1.getCourseTitle().compareTo(c2.getCourseTitle());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else if (itemId == optionSemester) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return Integer.compare(c1.getCourseSemester(), c2.getCourseSemester());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
+                popupMenu.show();
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-
         });
     }
+
+
 
     @Override
     protected void onDestroy() {
