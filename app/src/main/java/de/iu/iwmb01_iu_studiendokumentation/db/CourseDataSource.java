@@ -23,8 +23,8 @@ public class CourseDataSource {
     }
 
     // Tabellen und Spaltennamen für die Course-Tabelle
-    private static final String tableCourse = "course";
-    private static final String columnCourseId = "course_id";
+    public static final String tableCourse = "course";
+    public static final String columnCourseId = "course_id";
     private static final String columnTitle = "title";
     private static final String columnDescription = "description";
     private static final String columnSemester = "semester";

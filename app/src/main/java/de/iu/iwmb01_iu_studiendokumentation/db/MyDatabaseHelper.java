@@ -18,6 +18,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(ProfileDataSource.createTableProfile);
         db.execSQL(CourseDataSource.createTableCourse);
+        db.execSQL(LearningUnitDataSource.createTableLearningUnit);
     }
 
     @Override

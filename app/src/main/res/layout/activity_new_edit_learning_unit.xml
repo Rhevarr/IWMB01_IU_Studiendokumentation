@@ -28,11 +28,11 @@
         android:layout_marginTop="15dp"
         android:text="@string/hours"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/learningEffortMinutesNumberPicker"
+        app:layout_constraintStart_toEndOf="@+id/learningEffortPlannedMinutesNumberPicker"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
     <NumberPicker
-        android:id="@+id/learningEffortMinutesNumberPicker"
+        android:id="@+id/learningEffortPlannedMinutesNumberPicker"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginStart="1dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/courseTitleEditText"
+        android:id="@+id/learningUnitTitleEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -80,7 +80,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/learning_effort"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleEditText" />
 
     <Button
         android:id="@+id/newEditLearningUnitButton"
@@ -91,10 +91,10 @@
         android:text="@string/create_learning_unit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortMinutesNumberPicker" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedMinutesNumberPicker" />
 
     <NumberPicker
-        android:id="@+id/learningEffortHoursNumberPicker"
+        android:id="@+id/learningEffortPlannedHoursNumberPicker"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
@@ -108,7 +108,7 @@
         android:layout_marginStart="1dp"
         android:text="@string/colon"
         android:textSize="40sp"
-        app:layout_constraintStart_toEndOf="@+id/learningEffortHoursNumberPicker"
+        app:layout_constraintStart_toEndOf="@+id/learningEffortPlannedHoursNumberPicker"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
 

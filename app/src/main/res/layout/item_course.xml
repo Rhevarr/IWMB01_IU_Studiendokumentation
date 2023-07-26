@@ -13,7 +13,7 @@
         android:id="@+id/itemCourseConstraintView"
         style="@style/StandardItem"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:orientation="vertical"
         android:paddingStart="6dp"
         android:paddingEnd="6dp">

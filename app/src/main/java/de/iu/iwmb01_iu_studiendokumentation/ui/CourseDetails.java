@@ -63,6 +63,12 @@ public class CourseDetails extends AppCompatActivity {
         finish();
     }
 
+    public void addLearningUnitButtonClicked(View view) {
+        Intent intent = new Intent(this, NewEditLearningUnit.class);
+        intent.putExtra("MODE", "NEW");
+        startActivity(intent);
+    }
+
     @Override
     protected void onDestroy() {
 
