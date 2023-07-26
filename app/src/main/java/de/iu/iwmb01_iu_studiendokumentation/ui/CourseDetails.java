@@ -2,11 +2,14 @@ package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
+import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 
 public class CourseDetails extends AppCompatActivity {
@@ -18,14 +21,13 @@ public class CourseDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
 
-        course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
         setCourseTextViews();
     }
     private void setCourseTextViews() {
@@ -39,14 +41,32 @@ public class CourseDetails extends AppCompatActivity {
         courseSemesterTextView.setText(this.getString(R.string.semester_dp, course.getCourseSemester()));
     }
 
+    public void changeCourseButtonClicked(View view) {
+        Intent intent = new Intent(this, NewEditCourse.class);
+        intent.putExtra("MODE", "EDIT");
+        intent.putExtra("COURSE_OBJECT", course);
+        startActivity(intent);
+    }
+
     public void backButtonClicked(View view) {
+        finish();
+    }
+
+    public void deleteCourseButtonClicked (View view) {
+        CourseDataSource courseDataSource = new CourseDataSource(this);
+        courseDataSource.removeCourse(course);
+
+        String message = getResources().getString(R.string.toast_course_deleted);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+        courseDataSource.close();
         finish();
     }
 
     @Override
     protected void onDestroy() {
 
-   //     coursesDataSource.close();
+   //     learningUnitDataSource.close();
         super.onDestroy();
     }
 

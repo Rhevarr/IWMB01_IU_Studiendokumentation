@@ -15,7 +15,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/profile"
-        android:onClick="profileButtonClicked"
+        android:onClick="changeProfileButtonClicked"
         android:scaleType="centerInside"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
         android:text="@string/my_courses"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/courseListBottomConstraintLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -124,5 +124,28 @@
         app:layout_constraintEnd_toStartOf="@+id/changeProfileButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userFullNameTextView" />
+
+    <Spinner
+        android:id="@+id/courseListSortSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:dropDownWidth="wrap_content"
+        android:scrollbarStyle="outsideInset"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/courseListBottomConstraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/createCourseImageButton" />
+
+    <TextView
+        android:id="@+id/courseListSortTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_by"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/courseListSortSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/createCourseImageButton"
+        app:layout_constraintStart_toEndOf="@+id/myCoursesTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

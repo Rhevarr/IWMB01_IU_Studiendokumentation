@@ -117,6 +117,12 @@ public class CourseDataSource {
         close();
     }
 
+    public void removeCourse(Course course) {
+        db = myDatabaseHelper.getWritableDatabase();
+        db.delete(tableCourse, columnCourseId + " = ?", new String[] {Integer.toString(course.getCourseId())});
+        close();
+    }
+
     public void close() {
         if(cursor != null) {
             cursor.close();

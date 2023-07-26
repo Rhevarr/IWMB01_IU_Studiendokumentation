@@ -57,8 +57,7 @@ public class NewEditCourse extends AppCompatActivity {
             Button newEditCourseButton = findViewById(R.id.newEditCourseButton);
             newEditCourseButton.setText(R.string.save_course);
 
-            courseId = getIntent().getIntExtra("COURSE_ID", - 1);
-            course = courseDataSource.getCourse(courseId);
+            course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
 
             int indexOfCurrentSemester = adapter.getPosition(String.valueOf(course.getCourseSemester()));
 
@@ -120,6 +119,11 @@ public class NewEditCourse extends AppCompatActivity {
         String message = getResources().getString(R.string.toast_edit_course);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(this, CourseDetails.class);
+        intent.putExtra("COURSE_OBJECT", course);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
         finish();
     }
 
@@ -132,5 +136,10 @@ public class NewEditCourse extends AppCompatActivity {
 
     public void backButtonClicked(View view) {
         finish();
+    }
+    @Override
+    protected void onDestroy() {
+        courseDataSource.close();
+        super.onDestroy();
     }
 }
