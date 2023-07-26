@@ -83,14 +83,11 @@ public class CourseList extends AppCompatActivity {
                 PopupMenu popupMenu = new PopupMenu(CourseList.this, sortButton);
                 popupMenu.getMenuInflater().inflate(R.menu.sort_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    final int optionDate = R.id.option_date;
-                    final int optionTitle = R.id.option_title;
-                    final int optionSemester = R.id.option_semester;
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         int itemId = item.getItemId();
 
-                        if (itemId == optionDate) {
+                        if (itemId == R.id.option_date_asc) {
                             Collections.sort(courses, new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
@@ -99,7 +96,7 @@ public class CourseList extends AppCompatActivity {
                             });
                             courseAdapter.notifyDataSetChanged();
                             return true;
-                        } else if(itemId == optionTitle) {
+                        } else if(itemId == R.id.option_title_asc) {
                             Collections.sort(courses, new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
@@ -108,11 +105,38 @@ public class CourseList extends AppCompatActivity {
                             });
                             courseAdapter.notifyDataSetChanged();
                             return true;
-                        } else if (itemId == optionSemester) {
+                        } else if (itemId == R.id.option_semester_asc) {
                             Collections.sort(courses, new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return Integer.compare(c1.getCourseSemester(), c2.getCourseSemester());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else if (itemId == R.id.option_date_desc) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return c2.getCreationDate().compareTo(c1.getCreationDate());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else if(itemId == R.id.option_title_desc) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return c2.getCourseTitle().compareTo(c1.getCourseTitle());
+                                }
+                            });
+                            courseAdapter.notifyDataSetChanged();
+                            return true;
+                        } else if (itemId == R.id.option_semester_desc) {
+                            Collections.sort(courses, new Comparator<Course>() {
+                                @Override
+                                public int compare(Course c1, Course c2) {
+                                    return Integer.compare(c2.getCourseSemester(), c1.getCourseSemester());
                                 }
                             });
                             courseAdapter.notifyDataSetChanged();

@@ -61,9 +61,12 @@
     <string name="toast_edit_learning_unit">Lerneinheit wurde erfolgreich geändert!</string>
     <string name="toast_new_learning_effort">Lernaufwand wurde erfolgreich hinzugefügt!</string>
     <string name="toast_edit_learning_effort">Lernaufwand wurde erfolgreich geändert!</string>
-    <string name="sort_item_date">Erstelldatum</string>
-    <string name="sort_item_title">Titel</string>
-    <string name="sort_item_semester">Semester</string>
+    <string name="sort_item_date_asc">Erstelldatum (Aufsteigend)</string>
+    <string name="sort_item_title_asc">Titel (Aufsteigend)</string>
+    <string name="sort_item_semester_asc">Semester (Aufsteigend)</string>
+    <string name="sort_item_date_desc">Erstelldatum (Absteigend)</string>
+    <string name="sort_item_title_desc">Titel (Absteigend)</string>
+    <string name="sort_item_semester_desc">Semester (Absteigend)</string>
     <string name="sort_by">Sortieren nach</string>
 
 </resources>

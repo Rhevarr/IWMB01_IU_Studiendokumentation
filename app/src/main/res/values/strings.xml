@@ -60,9 +60,12 @@
     <string name="toast_edit_learning_unit">Learning unit has been successfully updated!</string>
     <string name="toast_new_learning_effort">Learning effort has been added successfully!</string>
     <string name="toast_edit_learning_effort">Learning effort has been successfully updated!</string>
-    <string name="sort_item_date">Creation date</string>
-    <string name="sort_item_title">Title</string>
-    <string name="sort_item_semester">Semester</string>
+    <string name="sort_item_date_asc">Creation date (Ascending)</string>
+    <string name="sort_item_title_asc">Title (Ascending)</string>
+    <string name="sort_item_semester_asc">Semester (Ascending)</string>
+    <string name="sort_item_date_desc">Creation date (Descending)</string>
+    <string name="sort_item_title_desc">Title (Descending)</string>
+    <string name="sort_item_semester_desc">Semester (Descending)</string>
     <string name="sort_by">Sort by</string>
 
 </resources>
