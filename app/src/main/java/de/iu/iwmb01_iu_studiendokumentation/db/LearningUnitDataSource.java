@@ -19,9 +19,6 @@ public class LearningUnitDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
-    public ArrayList<LearningUnit> getLearningUnitsForCourse(int courseId) {
-        return null;
-    }
     public LearningUnitDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);
     }
@@ -52,47 +49,45 @@ public class LearningUnitDataSource {
         close();
     }
 
-    public ArrayList<Course> getAllCourses() {
-        ArrayList<Course> courses = new ArrayList<>();
+    public ArrayList<LearningUnit> getLearningUnitsForCourse(int courseId) {
+        ArrayList<LearningUnit> learningUnits = new ArrayList<>();
 
         db = myDatabaseHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + tableCourse,null);
+        cursor = db.rawQuery("SELECT * FROM " + learningUnits + " WHERE " + CourseDataSource.columnCourseId +" = " + courseId,null);
 
         if (cursor.moveToFirst()) {
             do {
-                Course course = cursorToCourse(cursor);
-                courses.add(course);
+                LearningUnit learningUnit = cursorToLearningUnit(cursor);
+                learningUnits.add(learningUnit);
             } while (cursor.moveToNext());
         }
         close();
-        return courses;
+        return learningUnits;
     }
 
-    public Course getCourse(int courseId) {
-        Course course;
+    public LearningUnit getLearningUnit(int learningUnitId) {
+        LearningUnit learningUnit;
 
         db = myDatabaseHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + tableCourse + " WHERE " + columnCourseId +" = " + courseId,null);
+        cursor = db.rawQuery("SELECT * FROM " + tableLearningUnit + " WHERE " + columnLearningUnitId +" = " + learningUnitId,null);
 
-        course = cursorToCourse(cursor);
+        learningUnit = cursorToLearningUnit(cursor);
         close();
-        return course;
+        return learningUnit;
     }
 
-    private static Course cursorToCourse(Cursor cursor) {
+    private static LearningUnit cursorToLearningUnit(Cursor cursor) {
         if (cursor != null) {
 
-            int courseIDIndex = cursor.getColumnIndexOrThrow(columnCourseId);
+            int learningUnitIDIndex = cursor.getColumnIndexOrThrow(columnLearningUnitId);
             int creationDateIndex = cursor.getColumnIndex(columnCreationDate);
             int titleIndex = cursor.getColumnIndex(columnTitle);
-            int descriptionIndex = cursor.getColumnIndex(columnDescription);
-            int semesterIndex = cursor.getColumnIndex(columnSemester);
+            int plannedLearningEffortIndex = cursor.getColumnIndex(columnPlannedLearningEffort);
 
-            int courseId = cursor.getInt(courseIDIndex);
+            int learningUnitId = cursor.getInt(learningUnitIDIndex);
             String creationDateString = cursor.getString(creationDateIndex);
             String title = cursor.getString(titleIndex);
-            String description = cursor.getString(descriptionIndex);
-            int semester = cursor.getInt(semesterIndex);
+            long plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
@@ -103,26 +98,25 @@ public class LearningUnitDataSource {
                 ex.printStackTrace();
             }
 
-            return new Course(courseId, creationDate, title, description, semester);
+            return new LearningUnit(learningUnitId, creationDate, title, plannedLearningEffort);
         }
         return null;
     }
 
-    public void updateCourse(Course course) {
+    public void updateLearningUnit(LearningUnit learningUnit) {
         db = myDatabaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(columnTitle, course.getCourseTitle());
-        values.put(columnDescription, course.getCourseDescription());
-        values.put(columnSemester, course.getCourseSemester());
+        values.put(columnTitle, learningUnit.getLearningUnitId());
+        values.put(columnPlannedLearningEffort, learningUnit.getPlannedLearningEffort());
 
-        db.update(tableCourse, values, columnCourseId + " = ?", new String[] {Integer.toString(course.getCourseId())});
+        db.update(tableLearningUnit, values, columnLearningUnitId + " = ?", new String[] {Integer.toString(learningUnit.getLearningUnitId())});
         close();
     }
 
-    public void removeCourse(Course course) {
+    public void removeLearningUnit(LearningUnit learningUnit) {
         db = myDatabaseHelper.getWritableDatabase();
-        db.delete(tableCourse, columnCourseId + " = ?", new String[] {Integer.toString(course.getCourseId())});
+        db.delete(tableLearningUnit, columnLearningUnitId + " = ?", new String[] {Integer.toString(learningUnit.getLearningUnitId())});
         close();
     }
 
