@@ -5,7 +5,7 @@
     android:id="@+id/learningUnitDetailsConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CourseDetails">
+    tools:context=".ui.LearningUnitDetails">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/stopwatchActionButton"
@@ -33,6 +33,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/backButton"
+        android:onClick="backButtonClicked"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -46,6 +47,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/deleteButton"
+        android:onClick="deleteLearningUnitButtonClicked"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -65,11 +67,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/planned_dp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toStartOf="@+id/stopwatchActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleTextView" />
 
@@ -79,12 +82,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/current_dp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="@+id/stopwatchActionButton"
-        app:layout_constraintEnd_toStartOf="@+id/stopwatchActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
 
@@ -111,6 +114,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/changeButton"
+        android:onClick="changeLearningUnitButtonClicked"
         app:layout_constraintEnd_toStartOf="@+id/deleteLearningUnit"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="@android:drawable/ic_popup_sync" />
@@ -156,10 +160,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/my_learning_efforts"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/stopwatchActionButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton

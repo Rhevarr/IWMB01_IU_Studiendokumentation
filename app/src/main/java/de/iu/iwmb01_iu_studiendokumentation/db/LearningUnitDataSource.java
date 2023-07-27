@@ -37,7 +37,9 @@ public class LearningUnitDataSource {
             + columnPlannedLearningEffort + " INTEGER,"
             + columnCreationDate + " DATETIME DEFAULT CURRENT_TIMESTAMP,"
             + CourseDataSource.columnCourseId + " INTEGER,"
-            + "FOREIGN KEY(" + CourseDataSource.columnCourseId + ") REFERENCES " + CourseDataSource.tableCourse + "(" + CourseDataSource.columnCourseId + ")" + ")";
+            + "FOREIGN KEY(" + CourseDataSource.columnCourseId + ") REFERENCES "
+            + CourseDataSource.tableCourse + "(" + CourseDataSource.columnCourseId + ")"
+            + " ON DELETE CASCADE" + ")";
 
     public void addLearningUnit(String title, int plannedLearningEffortHours, int plannedLearningEffortMinutes, int courseId) {
         db = myDatabaseHelper.getWritableDatabase();
@@ -108,7 +110,7 @@ public class LearningUnitDataSource {
         db = myDatabaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(columnTitle, learningUnit.getLearningUnitId());
+        values.put(columnTitle, learningUnit.getLearningUnitTitle());
         values.put(columnPlannedLearningEffort, learningUnit.getPlannedLearningEffort());
 
         db.update(tableLearningUnit, values, columnLearningUnitId + " = ?", new String[] {Integer.toString(learningUnit.getLearningUnitId())});

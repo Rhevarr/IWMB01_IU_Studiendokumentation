@@ -15,6 +15,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // Dieser Befehl sorgt dafür, dass ON DELETE CASCADE funktioniert.
+        db.execSQL("PRAGMA foreign_keys=ON;");
 
         db.execSQL(ProfileDataSource.createTableProfile);
         db.execSQL(CourseDataSource.createTableCourse);

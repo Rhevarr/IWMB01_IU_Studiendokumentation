@@ -2,7 +2,7 @@
 <resources>
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@font/sourcesanspro_bold</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:windowBackground">@color/light_grey</item>
     </style>

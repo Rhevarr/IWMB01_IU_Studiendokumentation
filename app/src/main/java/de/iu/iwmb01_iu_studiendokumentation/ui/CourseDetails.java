@@ -34,13 +34,27 @@ public class CourseDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
 
+        if (savedInstanceState != null) {
+            course = (Course) savedInstanceState.getSerializable("COURSE_OBJECT");
+
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("COURSE_OBJECT", course);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
+        if (course == null) {
+            course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
+        }
+
         setCourseTextViews();
 
         learningUnits = learningUnitDataSource.getLearningUnitsForCourse(course.getCourseId());

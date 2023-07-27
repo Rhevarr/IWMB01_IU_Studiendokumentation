@@ -20,7 +20,6 @@ public class Course implements Serializable {
         this.courseTitle = courseTitle;
         this.courseDescription = courseDescription;
         this.courseSemester = courseSemester;
-        this.learningUnits = new ArrayList<LearningUnit>();
     }
 
     public int getCourseId() {

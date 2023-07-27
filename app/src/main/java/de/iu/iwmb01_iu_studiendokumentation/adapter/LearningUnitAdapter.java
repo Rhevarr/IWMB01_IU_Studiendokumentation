@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.ui.CourseDetails;
+import de.iu.iwmb01_iu_studiendokumentation.ui.LearningUnitDetails;
 
 public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapter.LearningUnitViewHolder> {
 
@@ -46,7 +47,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), CourseDetails.class);
+                Intent intent = new Intent(view.getContext(), LearningUnitDetails.class);
                 intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
                 view.getContext().startActivity(intent);
 

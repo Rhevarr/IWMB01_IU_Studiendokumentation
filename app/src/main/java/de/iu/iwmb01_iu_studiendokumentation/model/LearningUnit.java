@@ -23,7 +23,6 @@ public class LearningUnit implements Serializable{
         this.creationDate = creationDate;
         this.learningUnitTitle = learningUnitTitle;
         this.plannedLearningEffort = plannedLearningEffort;
-        this.learningEfforts = new ArrayList<LearningEffort>();
     }
 
     public int getLearningUnitId() {

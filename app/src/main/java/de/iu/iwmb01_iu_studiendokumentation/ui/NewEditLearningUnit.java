@@ -60,11 +60,14 @@ public class NewEditLearningUnit extends AppCompatActivity {
 
             int plannedLearningEffortHours = learningUnit.getPlannedLearningEffortHours();
             int plannedLearningEffortMinutes = learningUnit.getPlannedLearningEffortMinutes();
+            planedLearningEffortHoursNumberPicker.setValue(plannedLearningEffortHours);
+            planedLearningEffortMinutesNumberPicker.setValue(plannedLearningEffortMinutes);
 
             learningUnitTitleEditText.setText(learningUnit.getLearningUnitTitle());
         }
 
     }
+
 
     private void initializeNumberPickerValues() {
         String[] valuesHours = new String[100];
@@ -95,8 +98,8 @@ public class NewEditLearningUnit extends AppCompatActivity {
         } else {
             learningUnitTitle = learningUnitTitleEditText.getText().toString().trim();
 
-            learningEffortPlannedHours =  planedLearningEffortMinutesNumberPicker.getValue();
-            learningEffortPlannedMinutes = planedLearningEffortHoursNumberPicker.getValue();
+            learningEffortPlannedHours =  planedLearningEffortHoursNumberPicker.getValue();
+            learningEffortPlannedMinutes = planedLearningEffortMinutesNumberPicker.getValue();
 
             if(mode.equals("NEW")) {
                 newSaveLearningUnit();
@@ -126,7 +129,7 @@ public class NewEditLearningUnit extends AppCompatActivity {
         String message = getResources().getString(R.string.toast_edit_learning_unit);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, CourseDetails.class);
+        Intent intent = new Intent(this, LearningUnitDetails.class);
         intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
