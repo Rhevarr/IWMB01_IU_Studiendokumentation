@@ -37,7 +37,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
         LearningUnit learningUnit = learningUnits.get(position);
         holder.titleTextView.setText(learningUnit.getLearningUnitTitle());
 
-        String plannedLearningEffort = String.format(holder.itemView.getContext().getString(R.string.semester_dp), learningUnit.getPlannedLearningEffort());
+        String plannedLearningEffort= String.format(holder.itemView.getContext().getString(R.string.learning_effort_time_dp), learningUnit.getPlannedLearningEffortHours(), learningUnit.getPlannedLearningEffortMinutes());
         holder.plannedLearningEffortTextView.setText(plannedLearningEffort);
 
         // Der OnClickListener funktioniert so wie das onClick-Attribut bei den Buttons.

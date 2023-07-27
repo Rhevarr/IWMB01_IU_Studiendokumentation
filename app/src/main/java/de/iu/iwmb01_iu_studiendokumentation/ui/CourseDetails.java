@@ -1,6 +1,8 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +10,24 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import de.iu.iwmb01_iu_studiendokumentation.R;
+import de.iu.iwmb01_iu_studiendokumentation.adapter.LearningUnitAdapter;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
+import de.iu.iwmb01_iu_studiendokumentation.db.LearningUnitDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class CourseDetails extends AppCompatActivity {
 
+
+    private final LearningUnitDataSource learningUnitDataSource = new LearningUnitDataSource(this);
+
+    LearningUnitAdapter learningUnitAdapter;
+
     Course course;
+    private ArrayList<LearningUnit> learningUnits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +42,10 @@ public class CourseDetails extends AppCompatActivity {
 
         course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
         setCourseTextViews();
+
+        learningUnits = learningUnitDataSource.getLearningUnitsForCourse(course.getCourseId());
+        initializeRecyclerView();
+
     }
     private void setCourseTextViews() {
 
@@ -66,13 +83,23 @@ public class CourseDetails extends AppCompatActivity {
     public void addLearningUnitButtonClicked(View view) {
         Intent intent = new Intent(this, NewEditLearningUnit.class);
         intent.putExtra("MODE", "NEW");
+        intent.putExtra("COURSE_OBJECT", course);
         startActivity(intent);
     }
+
+    private void initializeRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.courseDetailsRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        learningUnitAdapter = new LearningUnitAdapter(learningUnits);
+        recyclerView.setAdapter(learningUnitAdapter);
+    }
+
 
     @Override
     protected void onDestroy() {
 
-   //     learningUnitDataSource.close();
+        learningUnitDataSource.close();
         super.onDestroy();
     }
 

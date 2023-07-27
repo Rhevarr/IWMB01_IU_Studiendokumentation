@@ -15,6 +15,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/backButton"
+        android:onClick="backButtonClicked"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -22,20 +23,20 @@
 
     <TextView
         android:id="@+id/learningEffortHoursTextView"
+        style="@style/CustomTextSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
         android:text="@string/hours"
-        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/learningEffortPlannedMinutesNumberPicker"
         app:layout_constraintStart_toEndOf="@+id/learningEffortPlannedMinutesNumberPicker"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedHoursNumberPicker" />
 
     <NumberPicker
         android:id="@+id/learningEffortPlannedMinutesNumberPicker"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="1dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/CustomTextSize"
         app:layout_constraintStart_toEndOf="@+id/colonTextView"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
@@ -67,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:labelFor="@id/courseTitleEditText"
+        android:labelFor="@id/learningUnitTitleEditText"
         android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newEditLearningUnitBackButton" />
@@ -88,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="saveLearningUnitButtonClicked"
         android:text="@string/create_learning_unit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,20 +98,21 @@
     <NumberPicker
         android:id="@+id/learningEffortPlannedHoursNumberPicker"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:theme="@style/CustomTextSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
     <TextView
         android:id="@+id/colonTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_height="57dp"
         android:text="@string/colon"
         android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/learningEffortPlannedHoursNumberPicker"
         app:layout_constraintStart_toEndOf="@+id/learningEffortPlannedHoursNumberPicker"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
+        app:layout_constraintTop_toTopOf="@+id/learningEffortPlannedMinutesNumberPicker" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

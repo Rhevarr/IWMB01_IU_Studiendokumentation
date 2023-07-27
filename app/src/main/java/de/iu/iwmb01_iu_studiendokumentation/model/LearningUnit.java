@@ -8,11 +8,17 @@ public class LearningUnit implements Serializable{
     private final int learningUnitId;
     private final Date creationDate;
     private String learningUnitTitle;
-    private long plannedLearningEffort;
+
+    // Der geplante Leraufwand wird in Minuten gespeichert. Sekunden sind zu fein, und dadurch reicht auch int aus.
+    private int plannedLearningEffort;
+
+    public static int calculateLearningEffort(int hours, int minutes) {
+        return (hours * 60) + minutes;
+    }
 
     private ArrayList<LearningEffort> learningEfforts;
 
-    public LearningUnit(int learningUnitId, Date creationDate, String learningUnitTitle, long plannedLearningEffort) {
+    public LearningUnit(int learningUnitId, Date creationDate, String learningUnitTitle, int plannedLearningEffort) {
         this.learningUnitId = learningUnitId;
         this.creationDate = creationDate;
         this.learningUnitTitle = learningUnitTitle;
@@ -35,13 +41,19 @@ public class LearningUnit implements Serializable{
     public void setLearningUnitTitle(String learningUnitTitle) {
         this.learningUnitTitle = learningUnitTitle;
     }
-
-    public long getPlannedLearningEffort() {
+    public int getPlannedLearningEffort() {
         return plannedLearningEffort;
     }
+    public int getPlannedLearningEffortHours() {
+        return plannedLearningEffort / 60;
+    }
 
-    public void setPlannedLearningEffort(long plannedLearningEffort) {
-        this.plannedLearningEffort = plannedLearningEffort;
+    public int getPlannedLearningEffortMinutes() {
+        return plannedLearningEffort % 60;
+    }
+
+    public void setPlannedLearningEffort(int plannedLearningEffortHours, int plannedLearningEffortMinutes) {
+        this.plannedLearningEffort = calculateLearningEffort(plannedLearningEffortHours, plannedLearningEffortMinutes);
     }
 
     public ArrayList<LearningEffort> getLearningEfforts() {

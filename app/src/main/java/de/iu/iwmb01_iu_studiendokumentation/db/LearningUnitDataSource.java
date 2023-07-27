@@ -39,12 +39,13 @@ public class LearningUnitDataSource {
             + CourseDataSource.columnCourseId + " INTEGER,"
             + "FOREIGN KEY(" + CourseDataSource.columnCourseId + ") REFERENCES " + CourseDataSource.tableCourse + "(" + CourseDataSource.columnCourseId + ")" + ")";
 
-    public void addLearningUnit(String title, long plannedLearningEffort) {
+    public void addLearningUnit(String title, int plannedLearningEffortHours, int plannedLearningEffortMinutes, int courseId) {
         db = myDatabaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(columnTitle, title);
-        values.put(columnPlannedLearningEffort, plannedLearningEffort);
+        values.put(columnPlannedLearningEffort, LearningUnit.calculateLearningEffort(plannedLearningEffortHours, plannedLearningEffortMinutes));
+        values.put(CourseDataSource.columnCourseId, courseId);
         db.insert(tableLearningUnit, null, values);
         close();
     }
@@ -53,7 +54,7 @@ public class LearningUnitDataSource {
         ArrayList<LearningUnit> learningUnits = new ArrayList<>();
 
         db = myDatabaseHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + learningUnits + " WHERE " + CourseDataSource.columnCourseId +" = " + courseId,null);
+        cursor = db.rawQuery("SELECT * FROM " + tableLearningUnit + " WHERE " + CourseDataSource.columnCourseId +" = " + courseId,null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -87,7 +88,7 @@ public class LearningUnitDataSource {
             int learningUnitId = cursor.getInt(learningUnitIDIndex);
             String creationDateString = cursor.getString(creationDateIndex);
             String title = cursor.getString(titleIndex);
-            long plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
+            int plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
