@@ -18,7 +18,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.ui.NewEditLearningEffort;
 
 public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAdapter.LearningEffortViewHolder> {
-    private ArrayList<LearningEffort> learningEfforts;
+    private final ArrayList<LearningEffort> learningEfforts;
 
     public LearningEffortAdapter(ArrayList<LearningEffort> learningEfforts) {
         this.learningEfforts = learningEfforts;

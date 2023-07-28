@@ -36,24 +36,29 @@ public class CourseDataSource {
             + columnTitle + " TEXT,"
             + columnDescription + " TEXT,"
             + columnSemester + " INTEGER,"
-            + columnCreationDate + " DATETIME DEFAULT CURRENT_TIMESTAMP" + ")";
+            + columnCreationDate + " DATETIME DEFAULT CURRENT_TIMESTAMP,"
+            + ProfileDataSource.columnProfileID + " INTEGER,"
+            + "FOREIGN KEY(" + ProfileDataSource.columnProfileID + ") REFERENCES "
+            + ProfileDataSource.tableProfile + "(" + ProfileDataSource.columnProfileID + ")"
+            + " ON DELETE CASCADE" + ")";
 
-    public void addCourse(String title, String description, int semester) {
+    public void addCourse(String title, String description, int semester, int profileId) {
         db = myDatabaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(columnTitle, title);
         values.put(columnDescription, description);
         values.put(columnSemester, semester);
+        values.put(ProfileDataSource.columnProfileID, profileId);
         db.insert(tableCourse, null, values);
         close();
     }
 
-    public ArrayList<Course> getAllCourses() {
+    public ArrayList<Course> getCoursesForProfile(int profileId) {
         ArrayList<Course> courses = new ArrayList<>();
 
         db = myDatabaseHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + tableCourse,null);
+        cursor = db.rawQuery("SELECT * FROM " + tableCourse + " WHERE " + ProfileDataSource.columnProfileID +" = " + profileId,null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -127,11 +132,11 @@ public class CourseDataSource {
         if(cursor != null) {
             cursor.close();
         }
-        if(myDatabaseHelper != null) {
-            myDatabaseHelper.close();
-        }
+
         if(db != null) {
             db.close();
         }
+
+        myDatabaseHelper.close();
     }
 }

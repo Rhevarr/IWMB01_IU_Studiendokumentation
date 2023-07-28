@@ -1,22 +1,20 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
@@ -42,11 +40,24 @@ public class CourseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
 
-        if (!profileDataSource.isProfileCreated()) {
+        if (savedInstanceState != null) {
+            profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");
+        } else {
+            profile = profileDataSource.getProfile();
+        }
+
+        if (profile == null) {
             // Wenn noch kein Profil erstellt wurde, startet stattdessen die WelcomeActivity
             goToWelcomeActivity();
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("PROFILE_OBJECT", profile);
     }
 
     private void initializeRecyclerView() {
@@ -67,9 +78,13 @@ public class CourseList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        if (profile == null) {
+            profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
+        }
+
         setProfileTextViews();
 
-       courses = coursesDataSource.getAllCourses();
+       courses = coursesDataSource.getCoursesForProfile(profile.getProfileID());
        initializeRecyclerView();
        initializeSortButton();
     }
@@ -83,12 +98,13 @@ public class CourseList extends AppCompatActivity {
                 PopupMenu popupMenu = new PopupMenu(CourseList.this, sortButton);
                 popupMenu.getMenuInflater().inflate(R.menu.sort_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         int itemId = item.getItemId();
 
                         if (itemId == R.id.option_date_asc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return c1.getCreationDate().compareTo(c2.getCreationDate());
@@ -97,7 +113,7 @@ public class CourseList extends AppCompatActivity {
                             courseAdapter.notifyDataSetChanged();
                             return true;
                         } else if(itemId == R.id.option_title_asc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return c1.getCourseTitle().compareTo(c2.getCourseTitle());
@@ -106,7 +122,7 @@ public class CourseList extends AppCompatActivity {
                             courseAdapter.notifyDataSetChanged();
                             return true;
                         } else if (itemId == R.id.option_semester_asc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return Integer.compare(c1.getCourseSemester(), c2.getCourseSemester());
@@ -115,7 +131,7 @@ public class CourseList extends AppCompatActivity {
                             courseAdapter.notifyDataSetChanged();
                             return true;
                         } else if (itemId == R.id.option_date_desc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return c2.getCreationDate().compareTo(c1.getCreationDate());
@@ -124,7 +140,7 @@ public class CourseList extends AppCompatActivity {
                             courseAdapter.notifyDataSetChanged();
                             return true;
                         } else if(itemId == R.id.option_title_desc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return c2.getCourseTitle().compareTo(c1.getCourseTitle());
@@ -133,7 +149,7 @@ public class CourseList extends AppCompatActivity {
                             courseAdapter.notifyDataSetChanged();
                             return true;
                         } else if (itemId == R.id.option_semester_desc) {
-                            Collections.sort(courses, new Comparator<Course>() {
+                            courses.sort(new Comparator<Course>() {
                                 @Override
                                 public int compare(Course c1, Course c2) {
                                     return Integer.compare(c2.getCourseSemester(), c1.getCourseSemester());
@@ -151,8 +167,6 @@ public class CourseList extends AppCompatActivity {
         });
     }
 
-
-
     @Override
     protected void onDestroy() {
 
@@ -164,18 +178,18 @@ public class CourseList extends AppCompatActivity {
     public void changeProfileButtonClicked(View view) {
         Intent intent = new Intent(this, NewEditProfile.class);
         intent.putExtra("MODE", "EDIT");
-        intent.putExtra("PROFILE_ID", profile.getProfileID());
+        intent.putExtra("PROFILE_OBJECT", profile);
         startActivity(intent);
     }
 
     public void addCourseButtonClicked(View view) {
         Intent intent = new Intent(this, NewEditCourse.class);
         intent.putExtra("MODE", "NEW");
+        intent.putExtra("PROFILE_OBJECT", profile);
         startActivity(intent);
     }
 
     private void setProfileTextViews() {
-        profile = profileDataSource.getProfile();
 
         TextView userFullNameTextView = findViewById(R.id.userFullNameTextView);
         TextView userStudyProgramTextView = findViewById(R.id.userStudyProgramTextView);

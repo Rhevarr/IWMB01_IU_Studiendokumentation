@@ -6,22 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import de.iu.iwmb01_iu_studiendokumentation.R;
-import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningUnitDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
-import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditLearningUnit extends AppCompatActivity {
 

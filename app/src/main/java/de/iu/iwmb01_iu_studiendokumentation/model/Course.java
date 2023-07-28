@@ -1,9 +1,7 @@
 package de.iu.iwmb01_iu_studiendokumentation.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.ArrayList;
 
 public class Course implements Serializable {
     private final int courseId;

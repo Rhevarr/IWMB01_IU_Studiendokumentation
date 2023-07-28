@@ -178,6 +178,7 @@
         android:clickable="true"
         android:contentDescription="@string/create_course"
         android:focusable="true"
+        android:onClick="addLearningEffortButtonClicked"
         android:scaleType="center"
         app:backgroundTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"

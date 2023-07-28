@@ -19,11 +19,11 @@ public class ProfileDataSource {
 
 
         // Tabellen und Spaltennamen für die Profile-Tabelle
-        private static final String tableProfile = "profile";
-        private static final String columnProfileID = "user_id";
-        private static final String columnFirstName = "first_name";
-        private static final String columnLastName = "last_name";
-        private static final String columnStudyProgram = "study_program";
+        static final String tableProfile = "profile";
+        static final String columnProfileID = "profile_id";
+        static final String columnFirstName = "first_name";
+        static final String columnLastName = "last_name";
+        static final String columnStudyProgram = "study_program";
 
         // SQL-Befehl zum anlegen der Tabelle als String
         public static final String createTableProfile = "CREATE TABLE " + tableProfile + "("
@@ -89,7 +89,6 @@ public class ProfileDataSource {
         profile = cursorToProfile(cursor);
         close();
         return profile;
-
     }
 
     public Profile getProfile(int profileId) {
@@ -103,22 +102,16 @@ public class ProfileDataSource {
         return profile;
     }
 
-    public boolean isProfileCreated() {
-        db = myDatabaseHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + tableProfile, null);
-        int count = cursor.getCount();
-        close();
-        return count > 0;
-    }
     public void close() {
         if(cursor != null) {
             cursor.close();
         }
-        if(myDatabaseHelper != null) {
-            myDatabaseHelper.close();
-        }
+
         if(db != null) {
-        db.close();
+            db.close();
+        }
+
+        myDatabaseHelper.close();
     }
 }
-}
+

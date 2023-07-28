@@ -1,6 +1,9 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +11,25 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import de.iu.iwmb01_iu_studiendokumentation.R;
-import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
+import de.iu.iwmb01_iu_studiendokumentation.adapter.LearningEffortAdapter;
+import de.iu.iwmb01_iu_studiendokumentation.db.LearningEffortDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningUnitDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class LearningUnitDetails extends AppCompatActivity {
 
+    private final LearningEffortDataSource learningEffortDataSource = new LearningEffortDataSource(this);
+
+    LearningEffortAdapter learningEffortAdapter;
+
     LearningUnit learningUnit;
+
+    private ArrayList<LearningEffort> learningEfforts;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +43,7 @@ public class LearningUnitDetails extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         outState.putSerializable("LEARNING_UNIT_OBJECT", learningUnit);
@@ -46,8 +59,8 @@ public class LearningUnitDetails extends AppCompatActivity {
 
           setLearningUnitTextViews();
 
-//        learningEfforts = learningEffortDataSource.getLearningEffortsForLearningUnit(learningUnit.getLearningUnitId());
-//        initializeRecyclerView();
+        learningEfforts = learningEffortDataSource.getLearningEffortsForLearningUnit(learningUnit.getLearningUnitId());
+        initializeRecyclerView();
     }
 
     private void setLearningUnitTextViews() {
@@ -79,5 +92,27 @@ public class LearningUnitDetails extends AppCompatActivity {
 
         learningUnitDataSource.close();
         finish();
+    }
+
+    public void addLearningEffortButtonClicked(View view) {
+        Intent intent = new Intent(this, NewEditLearningEffort.class);
+        intent.putExtra("MODE", "NEW");
+        intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
+        startActivity(intent);
+    }
+
+    private void initializeRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.learningUnitDetailsRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        learningEffortAdapter = new LearningEffortAdapter(learningEfforts);
+        recyclerView.setAdapter(learningEffortAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        learningEffortDataSource.close();
+        super.onDestroy();
     }
 }

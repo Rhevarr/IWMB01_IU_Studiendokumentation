@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class LearningUnitDataSource {
@@ -127,11 +126,11 @@ public class LearningUnitDataSource {
         if(cursor != null) {
             cursor.close();
         }
-        if(myDatabaseHelper != null) {
-            myDatabaseHelper.close();
-        }
+
         if(db != null) {
             db.close();
         }
+
+        myDatabaseHelper.close();
     }
 }

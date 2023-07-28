@@ -1,7 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class LearningUnit implements Serializable{
@@ -13,7 +12,7 @@ public class LearningUnit implements Serializable{
     private int plannedLearningEffort;
 
     public static int calculateLearningEffort(int hours, int minutes) {
-        return hours / 60;
+        return (hours * 60) + minutes;
     }
 
     public static int calculateLearningEffortHours(int learningEffortTime) {

@@ -24,8 +24,6 @@ public class NewEditProfile extends AppCompatActivity {
     private EditText firstNameEditText;
     private EditText lastNameEditText;
     private EditText studyProgramEditText;
-
-    private int profileId;
     private String firstName;
     private String lastName;
     private String studyProgram;
@@ -46,8 +44,7 @@ public class NewEditProfile extends AppCompatActivity {
         Button newEditProfileButton = findViewById(R.id.newEditProfileButton);
         newEditProfileButton.setText(R.string.save_profile);
 
-        profileId = getIntent().getIntExtra("PROFILE_ID", - 1);
-        profile = profileDataSource.getProfile(profileId);
+        profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
 
         firstNameEditText.setText(profile.getFirstName());
         lastNameEditText.setText(profile.getLastName());
@@ -97,6 +94,11 @@ private void editSaveProfile() {
         profileDataSource.updateProfile(profile);
         String message = getResources().getString(R.string.toast_edit_profile);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, CourseList.class);
+        intent.putExtra("PROFILE_OBJECT", profile);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
         finish();
 }

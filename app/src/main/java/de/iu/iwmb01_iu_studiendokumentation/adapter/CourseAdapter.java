@@ -18,7 +18,7 @@ import de.iu.iwmb01_iu_studiendokumentation.ui.CourseDetails;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
-    private ArrayList<Course> courses;
+    private final ArrayList<Course> courses;
 
     public CourseAdapter(ArrayList<Course> courses) {
         this.courses = courses;

@@ -14,12 +14,11 @@ import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
-import de.iu.iwmb01_iu_studiendokumentation.ui.CourseDetails;
 import de.iu.iwmb01_iu_studiendokumentation.ui.LearningUnitDetails;
 
 public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapter.LearningUnitViewHolder> {
 
-    private ArrayList<LearningUnit> learningUnits;
+    private final ArrayList<LearningUnit> learningUnits;
 
     public LearningUnitAdapter(ArrayList<LearningUnit> learningUnits) {
         this.learningUnits = learningUnits;

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
@@ -27,14 +25,13 @@ public class NewEditCourse extends AppCompatActivity {
 
     private String mode;
     private Course course;
+    private Profile profile;
 
     private EditText courseTitleEditText;
     private EditText courseDescriptionEditText;
     private Spinner semesterSpinner;
 
     private ArrayAdapter<String> adapter;
-
-    private int courseId;
     private String courseTitle;
     private String courseDescription;
     private int courseSemester;
@@ -46,6 +43,7 @@ public class NewEditCourse extends AppCompatActivity {
         setContentView(R.layout.activity_new_edit_course);
 
         mode = getIntent().getStringExtra("MODE");
+        profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
 
         courseTitleEditText = findViewById(R.id.courseTitleEditText);
         courseDescriptionEditText = findViewById(R.id.courseDescriptionEditText);
@@ -100,12 +98,13 @@ public class NewEditCourse extends AppCompatActivity {
 
     private void newSaveCourse() {
 
-        courseDataSource.addCourse(courseTitle, courseDescription, courseSemester);
+        courseDataSource.addCourse(courseTitle, courseDescription, courseSemester, profile.getProfileID());
         String message = getResources().getString(R.string.toast_new_course);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, CourseList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("PROFILE_OBJECT", profile);
         startActivity(intent);
         finish();
     }
