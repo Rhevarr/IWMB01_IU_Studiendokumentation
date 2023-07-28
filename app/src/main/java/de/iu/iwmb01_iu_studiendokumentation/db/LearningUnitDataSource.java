@@ -24,11 +24,11 @@ public class LearningUnitDataSource {
     }
 
     // Tabellen und Spaltennamen für die LearningUnit-Tabelle
-    private static final String tableLearningUnit = "learning_unit";
-    private static final String columnLearningUnitId = "learning_unit_id";
-    private static final String columnTitle = "title";
-    private static final String columnPlannedLearningEffort = "planned_learning_effort";
-    private static final String columnCreationDate = "creation_datetime";
+    static final String tableLearningUnit = "learning_unit";
+    static final String columnLearningUnitId = "learning_unit_id";
+    static final String columnTitle = "title";
+    static final String columnPlannedLearningEffort = "planned_learning_effort";
+    static final String columnCreationDate = "creation_datetime";
 
     // SQL-Befehl zum anlegen der Tabelle als String
     public static final String createTableLearningUnit = "CREATE TABLE " + tableLearningUnit + "("
@@ -92,7 +92,7 @@ public class LearningUnitDataSource {
             String title = cursor.getString(titleIndex);
             int plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             Date creationDate = null;
 
             try {

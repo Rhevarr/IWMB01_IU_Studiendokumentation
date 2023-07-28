@@ -13,7 +13,15 @@ public class LearningUnit implements Serializable{
     private int plannedLearningEffort;
 
     public static int calculateLearningEffort(int hours, int minutes) {
-        return (hours * 60) + minutes;
+        return hours / 60;
+    }
+
+    public static int calculateLearningEffortHours(int learningEffortTime) {
+        return learningEffortTime / 60;
+    }
+
+    public static int calculateLearningEffortMinutes(int learningEffortTime) {
+        return learningEffortTime % 60;
     }
 
     public LearningUnit(int learningUnitId, Date creationDate, String learningUnitTitle, int plannedLearningEffort) {
@@ -42,11 +50,11 @@ public class LearningUnit implements Serializable{
         return plannedLearningEffort;
     }
     public int getPlannedLearningEffortHours() {
-        return plannedLearningEffort / 60;
+        return calculateLearningEffortHours(plannedLearningEffort);
     }
 
     public int getPlannedLearningEffortMinutes() {
-        return plannedLearningEffort % 60;
+        return calculateLearningEffortMinutes(plannedLearningEffort);
     }
 
     public void setPlannedLearningEffort(int plannedLearningEffortHours, int plannedLearningEffortMinutes) {

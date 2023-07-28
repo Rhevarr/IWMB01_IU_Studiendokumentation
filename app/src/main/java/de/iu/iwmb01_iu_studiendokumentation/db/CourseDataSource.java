@@ -23,12 +23,12 @@ public class CourseDataSource {
     }
 
     // Tabellen und Spaltennamen für die Course-Tabelle
-    public static final String tableCourse = "course";
-    public static final String columnCourseId = "course_id";
-    private static final String columnTitle = "title";
-    private static final String columnDescription = "description";
-    private static final String columnSemester = "semester";
-    private static final String columnCreationDate = "creation_datetime";
+    static final String tableCourse = "course";
+    static final String columnCourseId = "course_id";
+    static final String columnTitle = "title";
+    static final String columnDescription = "description";
+    static final String columnSemester = "semester";
+    static final String columnCreationDate = "creation_datetime";
 
     // SQL-Befehl zum anlegen der Tabelle als String
     public static final String createTableCourse = "CREATE TABLE " + tableCourse + "("
@@ -91,7 +91,7 @@ public class CourseDataSource {
             String description = cursor.getString(descriptionIndex);
             int semester = cursor.getInt(semesterIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             Date creationDate = null;
 
             try {

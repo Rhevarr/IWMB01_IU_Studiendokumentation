@@ -36,7 +36,7 @@
             tools:text="@string/date_time_dp" />
 
         <TextView
-            android:id="@+id/itemPlannedLearningEffortTextView"
+            android:id="@+id/itemActualLearningEffortTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

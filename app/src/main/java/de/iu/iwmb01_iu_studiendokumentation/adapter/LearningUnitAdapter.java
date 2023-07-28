@@ -43,7 +43,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
 
         // Der OnClickListener funktioniert so wie das onClick-Attribut bei den Buttons.
         // Hierbei beziehe ich mich jedoch auf die ImageView innerhalb des Items.
-        holder.LearningUnitDetailsImageView.setOnClickListener(new View.OnClickListener() {
+        holder.learningUnitDetailsImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -62,14 +62,14 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
     public static class LearningUnitViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
         private final TextView plannedLearningEffortTextView;
-        private final ImageView LearningUnitDetailsImageView;
+        private final ImageView learningUnitDetailsImageView;
 
         public LearningUnitViewHolder(View view) {
             super(view);
 
             titleTextView =  view.findViewById(R.id.learningUnitTitleTextView);
             plannedLearningEffortTextView = view.findViewById(R.id.learningUnitPlannedEffortTextView);
-            LearningUnitDetailsImageView = view.findViewById(R.id.itemLearningUnitDetailsImageView);
+            learningUnitDetailsImageView = view.findViewById(R.id.itemLearningUnitDetailsImageView);
         }
     }
 }
