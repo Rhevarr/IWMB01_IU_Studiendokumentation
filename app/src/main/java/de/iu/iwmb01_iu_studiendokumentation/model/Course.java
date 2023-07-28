@@ -12,8 +12,6 @@ public class Course implements Serializable {
     private String courseDescription;
     private int courseSemester;
 
-    private ArrayList<LearningUnit> learningUnits;
-
     public Course(int courseId, Date creationDate, String courseTitle, String courseDescription, int courseSemester) {
         this.courseId = courseId;
         this.creationDate = creationDate;
@@ -52,14 +50,6 @@ public class Course implements Serializable {
 
     public void setCourseSemester(int courseSemester) {
         this.courseSemester = courseSemester;
-    }
-
-    public ArrayList<LearningUnit> getLearningUnits() {
-        return learningUnits;
-    }
-
-    public void setLearningUnits(ArrayList<LearningUnit> learningUnits) {
-        this.learningUnits = learningUnits;
     }
 
 }

@@ -18,7 +18,7 @@
     <string name="my_learning_units">My learning units</string>
     <string name="semester_dp">%d. Semester</string>
     <string name="planned">Planned learning effort</string>
-    <string name="learning_effort_time_dp">%d:%02d hours learning effort</string>
+    <string name="learning_effort_time_dp">%dh %02dm learning effort</string>
     <string name="learning_effort">Learning effort</string>
     <string name="colon">:</string>
     <string name="hours">hours</string>
@@ -28,8 +28,8 @@
     <string name="change_date">Change date</string>
     <string name="change_time">Change time</string>
     <string name="add_learning_effort">Add learning effort</string>
-    <string name="current_dp">Current: %d:%02d hours</string>
-    <string name="planned_dp">Planned: %d:%02d hours</string>
+    <string name="current_dp">Current: %dh %02dm</string>
+    <string name="planned_dp">Planned:  %dh %02dm</string>
     <string name="date_time_dp">%s at %s</string>
     <string name="start_timer">Start</string>
     <string name="stop_timer">Stop</string>

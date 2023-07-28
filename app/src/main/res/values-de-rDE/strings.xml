@@ -19,7 +19,7 @@
     <string name="my_learning_units">Meine Lerneinheiten</string>
     <string name="semester_dp">%d. Semester</string>
     <string name="planned">Geplanter Lernaufwand</string>
-    <string name="learning_effort_time_dp">%d:%02d Stunden Lernaufwand</string>
+    <string name="learning_effort_time_dp">%d Std. %02d Min. Lernaufwand</string>
     <string name="learning_effort">Lernaufwand</string>
     <string name="colon">:</string>
     <string name="hours">Stunden</string>
@@ -29,8 +29,8 @@
     <string name="change_date">Datum ändern</string>
     <string name="change_time">Uhrzeit ändern</string>
     <string name="add_learning_effort">Lernaufwand hinzufügen</string>
-    <string name="current_dp">Bisher: %d:%02d Stunden</string>
-    <string name="planned_dp">Geplant: %d:%02d Stunden</string>
+    <string name="current_dp">Bisher: %d Std. %02d Min.</string>
+    <string name="planned_dp">Geplant: %d Std. %02d Min.</string>
     <string name="date_time_dp">%s um %s</string>
     <string name="start_timer">Start</string>
     <string name="stop_timer">Stopp</string>
