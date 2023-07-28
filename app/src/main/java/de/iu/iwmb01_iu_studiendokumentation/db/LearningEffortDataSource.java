@@ -43,7 +43,7 @@ public class LearningEffortDataSource {
     public void addLearningEffort(Date learningEffortDate, int actualLearningEffortHours, int actualLearningEffortMinutes, int learningUnitId) {
         db = myDatabaseHelper.getWritableDatabase();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String learningEffortDateString = sdf.format(learningEffortDate);
 
         ContentValues values = new ContentValues();
@@ -94,7 +94,7 @@ public class LearningEffortDataSource {
             String learningEffortDateString = cursor.getString(learningEffortDateIndex);
             int actualLearningEffort = cursor.getInt(actualLearningEffortIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
             Date learningEffortDate = null;
 
@@ -114,7 +114,7 @@ public class LearningEffortDataSource {
     public void updateLearningEffort(LearningEffort learningEffort) {
         db = myDatabaseHelper.getWritableDatabase();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String learningEffortDateString = sdf.format(learningEffort.getLearningEffortDate());
 
         ContentValues values = new ContentValues();

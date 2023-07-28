@@ -96,7 +96,7 @@ public class CourseDataSource {
             String description = cursor.getString(descriptionIndex);
             int semester = cursor.getInt(semesterIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
 
             try {

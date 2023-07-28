@@ -91,7 +91,7 @@ public class LearningUnitDataSource {
             String title = cursor.getString(titleIndex);
             int plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
 
             try {
