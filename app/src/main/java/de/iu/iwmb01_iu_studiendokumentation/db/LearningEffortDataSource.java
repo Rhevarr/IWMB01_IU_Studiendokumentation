@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
@@ -18,8 +19,11 @@ public class LearningEffortDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
+    private static SimpleDateFormat sdf;
+
     public LearningEffortDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);
+        sdf = new SimpleDateFormat(context.getString(R.string.sdf_standard_format_date));
     }
 
     // Tabellen und Spaltennamen für die LearningUnit-Tabelle
@@ -43,7 +47,6 @@ public class LearningEffortDataSource {
     public void addLearningEffort(Date learningEffortDate, int actualLearningEffortHours, int actualLearningEffortMinutes, int learningUnitId) {
         db = myDatabaseHelper.getWritableDatabase();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String learningEffortDateString = sdf.format(learningEffortDate);
 
         ContentValues values = new ContentValues();
@@ -94,7 +97,6 @@ public class LearningEffortDataSource {
             String learningEffortDateString = cursor.getString(learningEffortDateIndex);
             int actualLearningEffort = cursor.getInt(actualLearningEffortIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
             Date learningEffortDate = null;
 
@@ -114,7 +116,6 @@ public class LearningEffortDataSource {
     public void updateLearningEffort(LearningEffort learningEffort) {
         db = myDatabaseHelper.getWritableDatabase();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String learningEffortDateString = sdf.format(learningEffort.getLearningEffortDate());
 
         ContentValues values = new ContentValues();

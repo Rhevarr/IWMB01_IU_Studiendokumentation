@@ -15,6 +15,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/deleteButton"
+        android:onClick="deleteLearningEffortButtonClicked"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -28,37 +29,37 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/backButton"
+        android:onClick="backButtonClicked"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <NumberPicker
-        android:id="@+id/learningEffortMinutesNumberPicker"
+        android:id="@+id/learningEffortActualMinutesNumberPicker"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/CustomTextSize"
         app:layout_constraintStart_toEndOf="@+id/colonTextView"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
     <TextView
         android:id="@+id/learningEffortHoursTextView"
+        style="@style/CustomTextSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
         android:text="@string/hours"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/learningEffortMinutesNumberPicker"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/learningEffortActualMinutesNumberPicker"
+        app:layout_constraintStart_toEndOf="@+id/learningEffortActualMinutesNumberPicker"
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortActualHoursNumberPicker" />
 
     <NumberPicker
-        android:id="@+id/learningEffortHoursNumberPicker"
+        android:id="@+id/learningEffortActualHoursNumberPicker"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:theme="@style/CustomTextSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
 
@@ -67,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/learning_effort"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeDateButton" />
@@ -100,12 +101,11 @@
         android:id="@+id/colonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
         android:text="@string/colon"
         android:textSize="40sp"
-        app:layout_constraintStart_toEndOf="@+id/learningEffortHoursNumberPicker"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/learningEffortActualHoursNumberPicker"
+        app:layout_constraintStart_toEndOf="@+id/learningEffortActualHoursNumberPicker"
+        app:layout_constraintTop_toTopOf="@+id/learningEffortActualMinutesNumberPicker" />
 
     <include
         android:id="@+id/toolbarInclude"
@@ -130,10 +130,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="saveLearningEffortButtonClicked"
         android:text="@string/add_learning_effort"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortMinutesNumberPicker" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortActualMinutesNumberPicker" />
 
     <TextView
         android:id="@+id/selectedDateTextView"
@@ -141,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="@string/string_placeholder"
+        android:text="@string/date_dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timestampTextView" />
 
@@ -151,7 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="@string/string_placeholder"
+        android:text="@string/time_dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectedDateTextView" />
 

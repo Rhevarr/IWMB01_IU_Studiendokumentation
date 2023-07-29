@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class LearningUnitDataSource {
@@ -18,8 +19,11 @@ public class LearningUnitDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
+    private static SimpleDateFormat sdf;
+
     public LearningUnitDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);
+        sdf = new SimpleDateFormat(context.getString(R.string.sdf_standard_format_date));
     }
 
     // Tabellen und Spaltennamen für die LearningUnit-Tabelle
@@ -91,7 +95,6 @@ public class LearningUnitDataSource {
             String title = cursor.getString(titleIndex);
             int plannedLearningEffort = cursor.getInt(plannedLearningEffortIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
 
             try {

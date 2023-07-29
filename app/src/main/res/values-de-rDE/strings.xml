@@ -56,7 +56,7 @@
     <string name="learning_unit_dp">Lerneinheit: %s</string>
     <string name="toast_course_deleted">Kurs wurde erfolgreich gelöscht!</string>
     <string name="toast_learning_unit_deleted">Lerneinheit wurde erfolgreich gelöscht!</string>
-    <string name="Learning_effort_deleted">Lernaufwand wurde erfolgreich gelöscht!</string>
+    <string name="toast_learning_effort_deleted">Lernaufwand wurde erfolgreich gelöscht!</string>
     <string name="toast_new_learning_unit">Lerneinheit wurde erfolgreich erstellt!</string>
     <string name="toast_edit_learning_unit">Lerneinheit wurde erfolgreich geändert!</string>
     <string name="toast_new_learning_effort">Lernaufwand wurde erfolgreich hinzugefügt!</string>
@@ -69,5 +69,10 @@
     <string name="sort_item_semester_desc">Semester (Absteigend)</string>
     <string name="sort_by">Sortieren nach</string>
     <string name="learning_effort_planned">Geplanter Lernaufwand</string>
+    <string name="sdf_standard_format_date">yyyy-MM-dd HH:mm:ss</string>
+    <string name="sdf_date_format">EEEE, d. MMMM yyyy</string>
+    <string name="sdf_time_format">H:mm Uhr</string>
+    <string name="date_dp">Datum: %s</string>
+    <string name="time_dp">Uhrzeit: %s</string>
 
 </resources>
