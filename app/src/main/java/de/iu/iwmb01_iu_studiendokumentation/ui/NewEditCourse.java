@@ -21,7 +21,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditCourse extends AppCompatActivity {
 
-    private final CourseDataSource courseDataSource = new CourseDataSource(this);
+    private CourseDataSource courseDataSource;
 
     private String mode;
     private Course course;
@@ -41,6 +41,8 @@ public class NewEditCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_edit_course);
+
+        courseDataSource = new CourseDataSource(this);
 
         mode = getIntent().getStringExtra("MODE");
         profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");

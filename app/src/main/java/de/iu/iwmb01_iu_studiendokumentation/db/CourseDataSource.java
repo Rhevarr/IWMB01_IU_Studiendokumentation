@@ -18,8 +18,11 @@ public class CourseDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
+    private SimpleDateFormat sdf;
+
     public CourseDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
     // Tabellen und Spaltennamen für die Course-Tabelle
@@ -81,7 +84,7 @@ public class CourseDataSource {
             return course;
         }
 
-    private static Course cursorToCourse(Cursor cursor) {
+    private Course cursorToCourse(Cursor cursor) {
         if (cursor != null) {
 
             int courseIDIndex = cursor.getColumnIndexOrThrow(columnCourseId);
@@ -96,7 +99,6 @@ public class CourseDataSource {
             String description = cursor.getString(descriptionIndex);
             int semester = cursor.getInt(semesterIndex);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date creationDate = null;
 
             try {

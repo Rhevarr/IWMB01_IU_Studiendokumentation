@@ -22,7 +22,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class LearningUnitDetails extends AppCompatActivity {
 
-    private final LearningEffortDataSource learningEffortDataSource = new LearningEffortDataSource(this);
+    private LearningEffortDataSource learningEffortDataSource;
 
     LearningEffortAdapter learningEffortAdapter;
 
@@ -35,6 +35,8 @@ public class LearningUnitDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_unit_details);
+
+        learningEffortDataSource = new LearningEffortDataSource(this);
 
         if (savedInstanceState != null) {
             learningUnit = (LearningUnit) savedInstanceState.getSerializable("LEARNING_UNIT_OBJECT");
@@ -105,7 +107,7 @@ public class LearningUnitDetails extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.learningUnitDetailsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        learningEffortAdapter = new LearningEffortAdapter(learningEfforts);
+        learningEffortAdapter = new LearningEffortAdapter(learningEfforts, learningUnit);
         recyclerView.setAdapter(learningEffortAdapter);
     }
 

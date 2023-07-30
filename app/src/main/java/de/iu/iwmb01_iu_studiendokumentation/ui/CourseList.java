@@ -26,8 +26,8 @@ import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class CourseList extends AppCompatActivity {
 
-    private final ProfileDataSource profileDataSource = new ProfileDataSource(this);
-    private final CourseDataSource coursesDataSource = new CourseDataSource(this);
+    private ProfileDataSource profileDataSource;
+    private CourseDataSource coursesDataSource;
 
     CourseAdapter courseAdapter;
 
@@ -39,6 +39,9 @@ public class CourseList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+
+        profileDataSource = new ProfileDataSource(this);
+        coursesDataSource = new CourseDataSource(this);
 
         if (savedInstanceState != null) {
             profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");

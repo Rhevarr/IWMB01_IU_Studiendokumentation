@@ -18,7 +18,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class NewEditLearningUnit extends AppCompatActivity {
 
-    private final LearningUnitDataSource learningUnitDataSource = new LearningUnitDataSource(this);
+    private LearningUnitDataSource learningUnitDataSource;
     private String mode;
     private LearningUnit learningUnit;
     private Course course;
@@ -35,6 +35,8 @@ public class NewEditLearningUnit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_edit_learning_unit);
+
+        learningUnitDataSource = new LearningUnitDataSource(this);
 
         mode = getIntent().getStringExtra("MODE");
         course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");

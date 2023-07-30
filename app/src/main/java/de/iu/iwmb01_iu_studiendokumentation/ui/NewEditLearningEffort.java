@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,7 +28,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class NewEditLearningEffort extends AppCompatActivity {
 
-    private final LearningEffortDataSource learningEffortDataSource = new LearningEffortDataSource(this);
+    private LearningEffortDataSource learningEffortDataSource;
     private String mode;
     private LearningEffort learningEffort;
     private LearningUnit learningUnit;
@@ -40,17 +41,19 @@ public class NewEditLearningEffort extends AppCompatActivity {
     private Date learningEffortDate;
     private int learningEffortActualHours;
     private int learningEffortActualMinutes;
-
     private String tempDateString;
     private String tempTimeString;
+
+    private SimpleDateFormat sdfDate;
+    private SimpleDateFormat sdfTime;
+    private SimpleDateFormat sdfDateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_edit_learning_effort);
 
-        ImageButton learningEffortDeleteButton = findViewById(R.id.deleteLearningEffortButton);
-        learningEffortDeleteButton.setVisibility(View.GONE); //Damit der DeleteButton nicht standardmäßig sichtbar ist.
+        learningEffortDataSource = new LearningEffortDataSource(this);
 
         mode = getIntent().getStringExtra("MODE");
         learningUnit = (LearningUnit) getIntent().getSerializableExtra("LEARNING_UNIT_OBJECT");
@@ -61,12 +64,23 @@ public class NewEditLearningEffort extends AppCompatActivity {
         actualLearningEffortMinutesNumberPicker = findViewById(R.id.learningEffortActualMinutesNumberPicker);
 
         initializeNumberPickerValues();
+        initializeChangeDateButton();
+        initializeChangeTimeButton();
+
+        sdfDate = new SimpleDateFormat(getString(R.string.sdf_date_format));
+        sdfTime = new SimpleDateFormat(getString(R.string.sdf_time_format));
+        sdfDateTime = new SimpleDateFormat(getString(R.string.sdf_standard_format_date));
+
+        if(mode.equals("NEW")) {
+            ImageButton learningEffortDeleteButton = findViewById(R.id.deleteLearningEffortButton);
+            learningEffortDeleteButton.setVisibility(View.GONE); //Damit der DeleteButton fehlt.
+
+            learningEffortDate = new Date();
+        }
 
         if(mode.equals("EDIT")) {
             Button newEditLearningUnitButton = findViewById(R.id.newEditLearningEffortButton);
             newEditLearningUnitButton.setText(R.string.save_learning_effort);
-
-            learningEffortDeleteButton.setVisibility(View.VISIBLE);
 
             learningEffort = (LearningEffort) getIntent().getSerializableExtra("LEARNING_EFFORT_OBJECT");
 
@@ -75,18 +89,35 @@ public class NewEditLearningEffort extends AppCompatActivity {
             actualLearningEffortHoursNumberPicker.setValue(actualLearningEffortHours);
             actualLearningEffortMinutesNumberPicker.setValue(actualLearningEffortMinutes);
 
-            Date learningEffortDate = learningEffort.getLearningEffortDate();
-
-            SimpleDateFormat sdfDate = new SimpleDateFormat(getString(R.string.sdf_date_format));
-            SimpleDateFormat sdfTime = new SimpleDateFormat(getString(R.string.sdf_time_format));
-            String timestampDateString = String.format(getString(R.string.date_dp),sdfDate.format(learningEffortDate));
-            String timestampTimeString = String.format(getString(R.string.time_dp),sdfTime.format(learningEffortDate));
-            selectedDateTextView.setText(timestampDateString);
-            selectedTimeTextView.setText(timestampTimeString);
+            learningEffortDate = learningEffort.getLearningEffortDate();
         }
+
+        initializeTempDateTimeStrings();
+        updateTimestampStrings();
     }
 
-    private void changeDateButtonClicked() {
+    private void updateTimestampStrings() {
+        String timestampDateString = String.format(getString(R.string.date_dp),sdfDate.format(learningEffortDate));
+        String timestampTimeString = String.format(getString(R.string.time_dp),sdfTime.format(learningEffortDate));
+        selectedDateTextView.setText(timestampDateString);
+        selectedTimeTextView.setText(timestampTimeString);
+    }
+
+    private void initializeTempDateTimeStrings() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(learningEffortDate);
+
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        tempDateString = year + "-" + month + "-" + day;
+        tempTimeString = hour + ":" + minute;
+    }
+
+    private void initializeChangeDateButton() {
         Button selectDateButton = findViewById(R.id.changeDateButton);
         selectDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +132,8 @@ public class NewEditLearningEffort extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int selectedYear, int selectedMonth, int selectedDay) {
 
-                        tempDateString = (selectedYear + "-" + selectedMonth+ "-" + selectedDay)+ " ";
+                        tempDateString = (selectedYear + "-" + selectedMonth + "-" + selectedDay);
+                        updateLearningEffortDate();
                     }
                 }, year, month, day);
                 datePickerDialog.show();
@@ -109,7 +141,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         });
     }
 
-    private void changeTimeButtonClicked() {
+    private void initializeChangeTimeButton() {
         Button selectTimeButton = findViewById(R.id.changeTimeButton);
         selectTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,23 +153,33 @@ public class NewEditLearningEffort extends AppCompatActivity {
                 // Damit dynamisch ermittelt werden kann, ob die Zeitauswahl für den Benutzer im 12- oder 24-Stunden-Modus erfolgt.
                 // Da aktuell nur deutsch als alternative Sprache neben englisch angeboten wird, passt das. Ist jedoch vermutlich sauberer lösbar.
                 boolean is24HourFormat;
-                if (Locale.getDefault().getLanguage().equals("de")) {
-                    is24HourFormat = true;
-                } else {
-                    is24HourFormat = false;
-                }
+                is24HourFormat = Locale.getDefault().getLanguage().equals("de");
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NewEditLearningEffort.this, new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
                         tempTimeString = (selectedHour + ":" + selectedMinute);
+                        updateLearningEffortDate();
                     }
                 }, hour, minute, is24HourFormat);
                 timePickerDialog.show();
             }
         });
     }
+
+    private void updateLearningEffortDate() {
+        String tempDateTimeString = tempDateString + " " + tempTimeString + ":00";
+
+        try {
+            learningEffortDate = sdfDateTime.parse(tempDateTimeString);
+            updateTimestampStrings();
+
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     private void initializeNumberPickerValues() {
         String[] valuesHours = new String[100];
@@ -167,8 +209,6 @@ public class NewEditLearningEffort extends AppCompatActivity {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         } else {
 
-            // todo: date und time values holen
-
             learningEffortActualHours =  actualLearningEffortHoursNumberPicker.getValue();
             learningEffortActualMinutes = actualLearningEffortMinutesNumberPicker.getValue();
 
@@ -185,7 +225,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         String message = getResources().getString(R.string.toast_new_learning_unit);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, CourseDetails.class);
+        Intent intent = new Intent(this, LearningUnitDetails.class);
         intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -201,10 +241,9 @@ public class NewEditLearningEffort extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, LearningUnitDetails.class);
-        intent.putExtra("LEARNING_EFFORT_OBJECT", learningEffort);
+        intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-
         finish();
     }
 

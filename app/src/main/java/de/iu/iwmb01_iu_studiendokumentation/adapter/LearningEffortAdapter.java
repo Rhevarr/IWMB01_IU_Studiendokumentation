@@ -15,13 +15,16 @@ import java.util.ArrayList;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.ui.NewEditLearningEffort;
 
 public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAdapter.LearningEffortViewHolder> {
     private final ArrayList<LearningEffort> learningEfforts;
+    private final LearningUnit learningUnit;
 
-    public LearningEffortAdapter(ArrayList<LearningEffort> learningEfforts) {
+    public LearningEffortAdapter(ArrayList<LearningEffort> learningEfforts, LearningUnit learningUnit) {
         this.learningEfforts = learningEfforts;
+        this.learningUnit = learningUnit;
     }
 
     @NonNull
@@ -37,7 +40,7 @@ public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAd
         LearningEffort learningEffort = learningEfforts.get(position);
 
         SimpleDateFormat sdf = new SimpleDateFormat(holder.itemView.getContext().getString(R.string.date_time_dp));
-        String learningEffortDate = sdf.format(learningEffort.getCreationDate());
+        String learningEffortDate = sdf.format(learningEffort.getLearningEffortDate());
         holder.learningEffortDateTextView.setText(learningEffortDate);
 
         String actualLearningEffort = String.format(holder.itemView.getContext().getString(R.string.learning_effort_time_dp), learningEffort.getActualLearningEffortHours(), learningEffort.getActualLearningEffortMinutes());
@@ -50,7 +53,9 @@ public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAd
             public void onClick(View view) {
 
                 Intent intent = new Intent(view.getContext(), NewEditLearningEffort.class);
+                intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
                 intent.putExtra("LEARNING_EFFORT_OBJECT", learningEffort);
+                intent.putExtra("MODE", "EDIT");
                 view.getContext().startActivity(intent);
 
             }

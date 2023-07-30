@@ -23,7 +23,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 public class CourseDetails extends AppCompatActivity {
 
 
-    private final LearningUnitDataSource learningUnitDataSource = new LearningUnitDataSource(this);
+    private LearningUnitDataSource learningUnitDataSource;
 
     LearningUnitAdapter learningUnitAdapter;
 
@@ -34,6 +34,8 @@ public class CourseDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
+
+        learningUnitDataSource = new LearningUnitDataSource(this);
 
         if (savedInstanceState != null) {
             course = (Course) savedInstanceState.getSerializable("COURSE_OBJECT");

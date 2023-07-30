@@ -16,7 +16,7 @@ import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditProfile extends AppCompatActivity {
 
-    private final ProfileDataSource profileDataSource = new ProfileDataSource(this);
+    private ProfileDataSource profileDataSource;
     private String mode;
 
     private Profile profile;
@@ -32,6 +32,8 @@ public class NewEditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_edit_profile);
+
+        profileDataSource = new ProfileDataSource(this);
 
         mode = getIntent().getStringExtra("MODE");
 

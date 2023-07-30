@@ -82,7 +82,7 @@ public class LearningUnitDataSource {
         return learningUnit;
     }
 
-    private static LearningUnit cursorToLearningUnit(Cursor cursor) {
+    private LearningUnit cursorToLearningUnit(Cursor cursor) {
         if (cursor != null) {
 
             int learningUnitIDIndex = cursor.getColumnIndexOrThrow(columnLearningUnitId);

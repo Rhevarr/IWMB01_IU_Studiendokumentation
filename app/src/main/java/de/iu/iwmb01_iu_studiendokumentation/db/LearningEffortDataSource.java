@@ -84,7 +84,7 @@ public class LearningEffortDataSource {
         return learningEffort;
     }
 
-    private static LearningEffort cursorToLearningEffort(Cursor cursor) {
+    private LearningEffort cursorToLearningEffort(Cursor cursor) {
         if (cursor != null) {
 
             int learningEffortIDIndex = cursor.getColumnIndexOrThrow(columnLearningEffortId);
@@ -99,7 +99,6 @@ public class LearningEffortDataSource {
 
             Date creationDate = null;
             Date learningEffortDate = null;
-
 
             try {
                 creationDate = sdf.parse(creationDateString);
