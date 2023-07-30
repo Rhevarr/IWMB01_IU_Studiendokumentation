@@ -15,12 +15,12 @@ public class LearningUnit implements Serializable{
         return (hours * 60) + minutes;
     }
 
-    public static int calculateLearningEffortHours(int learningEffortTime) {
-        return learningEffortTime / 60;
+    public static int calculateLearningEffortHours(long learningEffortTime) {
+        return (int) learningEffortTime / 60;
     }
 
-    public static int calculateLearningEffortMinutes(int learningEffortTime) {
-        return learningEffortTime % 60;
+    public static int calculateLearningEffortMinutes(long learningEffortTime) {
+        return (int) learningEffortTime % 60;
     }
 
     public LearningUnit(int learningUnitId, Date creationDate, String learningUnitTitle, int plannedLearningEffort) {

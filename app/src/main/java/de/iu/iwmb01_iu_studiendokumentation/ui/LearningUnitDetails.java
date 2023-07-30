@@ -59,10 +59,12 @@ public class LearningUnitDetails extends AppCompatActivity {
             learningUnit = (LearningUnit) getIntent().getSerializableExtra("LEARNING_UNIT_OBJECT");
         }
 
-          setLearningUnitTextViews();
-
         learningEfforts = learningEffortDataSource.getLearningEffortsForLearningUnit(learningUnit.getLearningUnitId());
+
+        setLearningUnitTextViews();
+        setLearningEffortCurrentTextView();
         initializeRecyclerView();
+
     }
 
     private void setLearningUnitTextViews() {
@@ -109,6 +111,19 @@ public class LearningUnitDetails extends AppCompatActivity {
 
         learningEffortAdapter = new LearningEffortAdapter(learningEfforts, learningUnit);
         recyclerView.setAdapter(learningEffortAdapter);
+    }
+
+    private void setLearningEffortCurrentTextView() {
+        long actualLearningEffortsSum = 0;
+
+        for (LearningEffort learningEffort : learningEfforts) {
+            actualLearningEffortsSum += learningEffort.getActualLearningEffort();
+        }
+        int sumHours =  LearningUnit.calculateLearningEffortHours(actualLearningEffortsSum);
+        int sumMinutes = LearningUnit.calculateLearningEffortMinutes(actualLearningEffortsSum);
+
+        TextView currentLearningEffortTextView = findViewById(R.id.learningEffortCurrentTextView);
+        currentLearningEffortTextView.setText(this.getString(R.string.current_dp, sumHours, sumMinutes));
     }
 
     @Override
