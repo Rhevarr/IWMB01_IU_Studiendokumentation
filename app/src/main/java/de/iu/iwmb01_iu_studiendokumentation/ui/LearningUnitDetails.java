@@ -30,6 +30,9 @@ public class LearningUnitDetails extends AppCompatActivity {
 
     private ArrayList<LearningEffort> learningEfforts;
 
+    private int sumHours;
+    private int sumMinutes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,8 +122,8 @@ public class LearningUnitDetails extends AppCompatActivity {
         for (LearningEffort learningEffort : learningEfforts) {
             actualLearningEffortsSum += learningEffort.getActualLearningEffort();
         }
-        int sumHours =  LearningUnit.calculateLearningEffortHours(actualLearningEffortsSum);
-        int sumMinutes = LearningUnit.calculateLearningEffortMinutes(actualLearningEffortsSum);
+        sumHours =  LearningUnit.calculateLearningEffortHours(actualLearningEffortsSum);
+        sumMinutes = LearningUnit.calculateLearningEffortMinutes(actualLearningEffortsSum);
 
         TextView currentLearningEffortTextView = findViewById(R.id.learningEffortCurrentTextView);
         currentLearningEffortTextView.setText(this.getString(R.string.current_dp, sumHours, sumMinutes));
@@ -129,6 +132,8 @@ public class LearningUnitDetails extends AppCompatActivity {
     public void newLearningEffortStopwatchButtonClicked(View view) {
         Intent intent = new Intent(this, NewLearningEffortStopwatch.class);
         intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
+        intent.putExtra("LEARNING_EFFORT_SUM_HOURS", sumHours);
+        intent.putExtra("LEARNING_EFFORT_SUM_MINUTES", sumMinutes);
         startActivity(intent);
     }
 

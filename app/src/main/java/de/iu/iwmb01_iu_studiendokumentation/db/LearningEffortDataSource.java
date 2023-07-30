@@ -19,7 +19,7 @@ public class LearningEffortDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
-    private static SimpleDateFormat sdf;
+    private final SimpleDateFormat sdf;
 
     public LearningEffortDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);

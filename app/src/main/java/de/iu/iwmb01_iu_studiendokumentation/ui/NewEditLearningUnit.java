@@ -15,7 +15,6 @@ import android.widget.Toast;
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningUnitDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
-import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class NewEditLearningUnit extends AppCompatActivity {

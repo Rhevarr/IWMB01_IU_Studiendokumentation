@@ -19,7 +19,7 @@ public class LearningUnitDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
-    private static SimpleDateFormat sdf;
+    private final SimpleDateFormat sdf;
 
     public LearningUnitDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);

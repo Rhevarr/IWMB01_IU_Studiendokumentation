@@ -24,10 +24,8 @@ import java.util.Locale;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningEffortDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
-import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditLearningEffort extends AppCompatActivity {
 
@@ -89,19 +87,18 @@ public class NewEditLearningEffort extends AppCompatActivity {
         if(mode.equals("EDIT")) {
             Button newEditLearningUnitButton = findViewById(R.id.newEditLearningEffortButton);
             newEditLearningUnitButton.setText(R.string.save_learning_effort);
+
+            if (learningEffort == null) {
+                learningEffort = (LearningEffort) getIntent().getSerializableExtra("LEARNING_EFFORT_OBJECT");
+            }
+
+            int actualLearningEffortHours = learningEffort.getActualLearningEffortHours();
+            int actualLearningEffortMinutes = learningEffort.getActualLearningEffortMinutes();
+            actualLearningEffortHoursNumberPicker.setValue(actualLearningEffortHours);
+            actualLearningEffortMinutesNumberPicker.setValue(actualLearningEffortMinutes);
+
+            learningEffortDate = learningEffort.getLearningEffortDate();
         }
-
-        if (learningEffort == null) {
-            learningEffort = (LearningEffort) getIntent().getSerializableExtra("LEARNING_EFFORT_OBJECT");
-        }
-
-
-        int actualLearningEffortHours = learningEffort.getActualLearningEffortHours();
-        int actualLearningEffortMinutes = learningEffort.getActualLearningEffortMinutes();
-        actualLearningEffortHoursNumberPicker.setValue(actualLearningEffortHours);
-        actualLearningEffortMinutesNumberPicker.setValue(actualLearningEffortMinutes);
-
-        learningEffortDate = learningEffort.getLearningEffortDate();
 
         initializeTempDateTimeStrings();
         updateTimestampStrings();
@@ -241,7 +238,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
 
     private void newSaveLearningEffort() {
         learningEffortDataSource.addLearningEffort(learningEffortDate, learningEffortActualHours, learningEffortActualMinutes, learningUnit.getLearningUnitId());
-        String message = getResources().getString(R.string.toast_new_learning_unit);
+        String message = getResources().getString(R.string.toast_new_learning_effort);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, LearningUnitDetails.class);

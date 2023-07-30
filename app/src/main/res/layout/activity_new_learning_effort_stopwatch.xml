@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.NewLearningEffortStopwatch">
 
-    <Button
-        android:id="@+id/resetStopwatchButton"
-        style="@style/StandardButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/reset_timer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/stopStopwatchButton"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortStopwatchChronometer" />
-
     <ImageButton
         android:id="@+id/newLearningEffortStopwatchBackButton"
         style="@style/StandardButton"
@@ -46,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:onClick="saveLearningEffortButtonClicked"
         android:text="@string/add_learning_effort"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +43,26 @@
     <Button
         android:id="@+id/startStopwatchButton"
         style="@style/StandardButton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="startStopwatchButtonClicked"
         android:text="@string/start_timer"
         app:layout_constraintEnd_toStartOf="@+id/stopStopwatchButton"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortStopwatchChronometer" />
 
     <Button
         android:id="@+id/stopStopwatchButton"
         style="@style/StandardButton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="stopStopwatchButtonClicked"
         android:text="@string/stop_timer"
-        app:layout_constraintEnd_toStartOf="@+id/resetStopwatchButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/startStopwatchButton"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortStopwatchChronometer" />
@@ -79,12 +71,11 @@
         android:id="@id/learningEffortStopwatchChronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:format="H:mm:ss"
+        android:layout_marginTop="60dp"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortCurrentTextView" />
 
     <TextView
         android:id="@+id/learningUnitTitleTextView"
@@ -116,5 +107,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleTextView" />
 
+    <TextView
+        android:id="@+id/learningEffortCurrentTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/current_dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

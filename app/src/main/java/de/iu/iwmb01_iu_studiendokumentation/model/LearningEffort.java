@@ -30,10 +30,6 @@ public class LearningEffort implements Serializable {
         return actualLearningEffort;
     }
 
-    public void setActualLearningEffort(int actualLearningEffort) {
-        this.actualLearningEffort = actualLearningEffort;
-    }
-
     public Date getLearningEffortDate() {
         return learningEffortDate;
     }

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
-import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditCourse extends AppCompatActivity {

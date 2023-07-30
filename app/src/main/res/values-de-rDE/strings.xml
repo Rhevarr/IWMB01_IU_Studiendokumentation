@@ -41,12 +41,12 @@
     <string name="stopwatchButton">Stoppuhr</string>
     <string name="create_new_profile">Neues Profil erstellen</string>
     <string name="welcome_message">Willkommen bei der \n IU Studiendokumentation!</string>
-    <string name="welcome_message_create_profile">Bitte erstelle ein neues Profil, um fortzufahren.</string>
-    <string name="toast_error_edittexts_empty">Bitte fülle alle Felder aus.</string>
-    <string name="toast_new_profile">Profil wurde erfolgreich erstellt!</string>
-    <string name="toast_edit_profile">Profil wurde erfolgreich geändert!</string>
-    <string name="toast_new_course">Kurs wurde erfolgreich erstellt!</string>
-    <string name="toast_edit_course">Kurs wurde erfolgreich geändert!</string>
+    <string name="welcome_message_create_profile">Bitte erstelle ein neues Profil, um fortzufahren</string>
+    <string name="toast_error_edittexts_empty">Bitte fülle alle Felder aus!</string>
+    <string name="toast_new_profile">Profil wurde erfolgreich erstellt</string>
+    <string name="toast_edit_profile">Profil wurde erfolgreich geändert</string>
+    <string name="toast_new_course">Kurs wurde erfolgreich erstellt</string>
+    <string name="toast_edit_course">Kurs wurde erfolgreich geändert</string>
     <string name="create_profile">Profil erstellen</string>
     <string name="save_course">Kurs speichern</string>
     <string name="save_learning_unit">Lerneinheit speichern</string>
@@ -74,5 +74,8 @@
     <string name="sdf_time_format">H:mm Uhr</string>
     <string name="date_dp">Datum: %s</string>
     <string name="time_dp">Uhrzeit: %s</string>
+    <string name="continue_timer">Weiter</string>
+    <string name="toast_error_stopwatch_running">Die Stoppuhr läuft noch!</string>
+    <string name="toast_error_stopwatch_empty">Die Stoppuhr wurde noch nicht gestartet</string>
 
 </resources>

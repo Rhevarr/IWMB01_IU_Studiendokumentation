@@ -40,12 +40,12 @@
     <string name="stopwatchButton">Stopwatch</string>
     <string name="create_new_profile">Create new profile</string>
     <string name="welcome_message">Welcome to \n IU Study Documentation!</string>
-    <string name="welcome_message_create_profile">Please create a new profile to proceed.</string>
-    <string name="toast_error_edittexts_empty">Please fill out all fields.</string>
-    <string name="toast_new_profile">Profile has been successfully created!</string>
-    <string name="toast_edit_profile">Profile has been successfully updated!</string>
-    <string name="toast_new_course">Course has been successfully created!</string>
-    <string name="toast_edit_course">Course has been successfully updated!</string>
+    <string name="welcome_message_create_profile">Please create a new profile to proceed</string>
+    <string name="toast_error_edittexts_empty">Please fill out all fields!</string>
+    <string name="toast_new_profile">Profile has been successfully created</string>
+    <string name="toast_edit_profile">Profile has been successfully updated</string>
+    <string name="toast_new_course">Course has been successfully created</string>
+    <string name="toast_edit_course">Course has been successfully updated</string>
     <string name="create_profile">Create profile</string>
     <string name="save_course">Save course</string>
     <string name="save_learning_unit">Save learning unit</string>
@@ -73,5 +73,8 @@
     <string name="sdf_time_format">K:mm a</string>
     <string name="date_dp">Date: %s</string>
     <string name="time_dp">Time: %s</string>
+    <string name="continue_timer">Continue</string>
+    <string name="toast_error_stopwatch_running">The stopwatch is still running!</string>
+    <string name="toast_error_stopwatch_empty">The stopwatch hasn\'t started yet</string>
 
 </resources>

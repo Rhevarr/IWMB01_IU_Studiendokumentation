@@ -18,7 +18,7 @@ public class CourseDataSource {
     private final MyDatabaseHelper myDatabaseHelper;
     private Cursor cursor;
 
-    private SimpleDateFormat sdf;
+    private final SimpleDateFormat sdf;
 
     public CourseDataSource(Context context) {
         myDatabaseHelper = new MyDatabaseHelper(context);

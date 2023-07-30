@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
-import de.iu.iwmb01_iu_studiendokumentation.model.Course;
-import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditProfile extends AppCompatActivity {
@@ -45,7 +43,7 @@ public class NewEditProfile extends AppCompatActivity {
         studyProgramEditText = findViewById((R.id.studyProgramEditText));
 
         if (savedInstanceState != null) {
-            profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
+            profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");
         }
 
     if(mode.equals("EDIT")) {
