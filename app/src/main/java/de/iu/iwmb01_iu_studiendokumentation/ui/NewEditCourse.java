@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.CourseDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditCourse extends AppCompatActivity {
@@ -53,11 +55,18 @@ public class NewEditCourse extends AppCompatActivity {
 
         initializeSpinnerValues();
 
+        if (savedInstanceState != null) {
+            profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");
+            course = (Course) savedInstanceState.getSerializable("COURSE_OBJECT");
+        }
+
         if(mode.equals("EDIT")) {
             Button newEditCourseButton = findViewById(R.id.newEditCourseButton);
             newEditCourseButton.setText(R.string.save_course);
 
-            course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
+            if (course == null) {
+                course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
+            }
 
             int indexOfCurrentSemester = adapter.getPosition(String.valueOf(course.getCourseSemester()));
 
@@ -66,6 +75,14 @@ public class NewEditCourse extends AppCompatActivity {
             semesterSpinner.setSelection(indexOfCurrentSemester);
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("PROFILE_OBJECT", profile);
+        outState.putSerializable("COURSE_OBJECT", course);
     }
 
     private void initializeSpinnerValues() {

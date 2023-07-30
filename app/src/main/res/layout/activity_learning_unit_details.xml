@@ -7,23 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.LearningUnitDetails">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/stopwatchActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/stopwatchImageButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/standard_button"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:contentDescription="@string/stopwatchButton"
         android:focusable="true"
-        android:scaleType="centerCrop"
-        android:tint="@color/white"
+        android:onClick="newLearningEffortStopwatchButtonClicked"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
         app:backgroundTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
         app:layout_constraintEnd_toStartOf="@+id/createLearningEffortImageButton"
         app:maxImageSize="30dp"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
+        app:tint="@color/white" />
 
     <ImageButton
         android:id="@+id/learningUnitDetailsBackButton"
@@ -165,7 +167,7 @@
         android:text="@string/my_learning_efforts"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/stopwatchActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/stopwatchImageButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton

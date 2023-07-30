@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -23,8 +24,10 @@ import java.util.Locale;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningEffortDataSource;
+import de.iu.iwmb01_iu_studiendokumentation.model.Course;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
+import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditLearningEffort extends AppCompatActivity {
 
@@ -71,6 +74,11 @@ public class NewEditLearningEffort extends AppCompatActivity {
         sdfTime = new SimpleDateFormat(getString(R.string.sdf_time_format));
         sdfDateTime = new SimpleDateFormat(getString(R.string.sdf_standard_format_date));
 
+        if (savedInstanceState != null) {
+            learningUnit = (LearningUnit) savedInstanceState.getSerializable("LEARNING_UNIT_OBJECT");
+            learningEffort = (LearningEffort) savedInstanceState.getSerializable("LEARNING_EFFORT_OBJECT");
+        }
+
         if(mode.equals("NEW")) {
             ImageButton learningEffortDeleteButton = findViewById(R.id.deleteLearningEffortButton);
             learningEffortDeleteButton.setVisibility(View.GONE); //Damit der DeleteButton fehlt.
@@ -81,19 +89,30 @@ public class NewEditLearningEffort extends AppCompatActivity {
         if(mode.equals("EDIT")) {
             Button newEditLearningUnitButton = findViewById(R.id.newEditLearningEffortButton);
             newEditLearningUnitButton.setText(R.string.save_learning_effort);
-
-            learningEffort = (LearningEffort) getIntent().getSerializableExtra("LEARNING_EFFORT_OBJECT");
-
-            int actualLearningEffortHours = learningEffort.getActualLearningEffortHours();
-            int actualLearningEffortMinutes = learningEffort.getActualLearningEffortMinutes();
-            actualLearningEffortHoursNumberPicker.setValue(actualLearningEffortHours);
-            actualLearningEffortMinutesNumberPicker.setValue(actualLearningEffortMinutes);
-
-            learningEffortDate = learningEffort.getLearningEffortDate();
         }
+
+        if (learningEffort == null) {
+            learningEffort = (LearningEffort) getIntent().getSerializableExtra("LEARNING_EFFORT_OBJECT");
+        }
+
+
+        int actualLearningEffortHours = learningEffort.getActualLearningEffortHours();
+        int actualLearningEffortMinutes = learningEffort.getActualLearningEffortMinutes();
+        actualLearningEffortHoursNumberPicker.setValue(actualLearningEffortHours);
+        actualLearningEffortMinutesNumberPicker.setValue(actualLearningEffortMinutes);
+
+        learningEffortDate = learningEffort.getLearningEffortDate();
 
         initializeTempDateTimeStrings();
         updateTimestampStrings();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("LEARNING_UNIT_OBJECT", learningUnit);
+        outState.putSerializable("LEARNING_EFFORT_OBJECT", learningUnit);
     }
 
     private void updateTimestampStrings() {

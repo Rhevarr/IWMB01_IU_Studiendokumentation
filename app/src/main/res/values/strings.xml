@@ -28,7 +28,7 @@
     <string name="change_date">Change date</string>
     <string name="change_time">Change time</string>
     <string name="add_learning_effort">Add learning effort</string>
-    <string name="current_dp">Current: %dh %02dm</string>
+    <string name="current_dp">So far: %dh %02dm</string>
     <string name="planned_dp">Planned:  %dh %02dm</string>
     <string name="date_time_dp">EEEE, MMMM d, yyyy \'at\' K:mm a</string>
     <string name="start_timer">Start</string>

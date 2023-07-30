@@ -20,13 +20,14 @@
         app:layout_constraintTop_toBottomOf="@+id/learningEffortStopwatchChronometer" />
 
     <ImageButton
-        android:id="@+id/newEditProfileBackButton"
+        android:id="@+id/newLearningEffortStopwatchBackButton"
         style="@style/StandardButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/backButton"
+        android:onClick="backButtonClicked"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
@@ -67,22 +68,53 @@
         style="@style/StandardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/stop_timer"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/resetStopwatchButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/startStopwatchButton"
-        app:layout_constraintTop_toTopOf="@+id/toolbarInclude" />
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortStopwatchChronometer" />
 
     <Chronometer
         android:id="@id/learningEffortStopwatchChronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="100dp"
         android:format="H:mm:ss"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/stopStopwatchButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
+
+    <TextView
+        android:id="@+id/learningUnitTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/string_placeholder"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newLearningEffortStopwatchBackButton" />
+
+    <TextView
+        android:id="@+id/learningEffortPlannedTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/planned_dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleTextView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

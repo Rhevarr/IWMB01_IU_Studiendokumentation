@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.ProfileDataSource;
+import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 import de.iu.iwmb01_iu_studiendokumentation.model.Profile;
 
 public class NewEditProfile extends AppCompatActivity {
@@ -41,12 +44,18 @@ public class NewEditProfile extends AppCompatActivity {
         lastNameEditText = findViewById(R.id.lastNameEditText);
         studyProgramEditText = findViewById((R.id.studyProgramEditText));
 
+        if (savedInstanceState != null) {
+            profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
+        }
+
     if(mode.equals("EDIT")) {
 
         Button newEditProfileButton = findViewById(R.id.newEditProfileButton);
         newEditProfileButton.setText(R.string.save_profile);
 
-        profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
+        if (profile == null) {
+            profile = (Profile) getIntent().getSerializableExtra("PROFILE_OBJECT");
+        }
 
         firstNameEditText.setText(profile.getFirstName());
         lastNameEditText.setText(profile.getLastName());
@@ -54,6 +63,12 @@ public class NewEditProfile extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("PROFILE_OBJECT", profile);
+    }
 
     public void backButtonClicked(View view) {
         finish();

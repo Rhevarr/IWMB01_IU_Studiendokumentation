@@ -126,6 +126,12 @@ public class LearningUnitDetails extends AppCompatActivity {
         currentLearningEffortTextView.setText(this.getString(R.string.current_dp, sumHours, sumMinutes));
     }
 
+    public void newLearningEffortStopwatchButtonClicked(View view) {
+        Intent intent = new Intent(this, NewLearningEffortStopwatch.class);
+        intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
+        startActivity(intent);
+    }
+
     @Override
     protected void onDestroy() {
 

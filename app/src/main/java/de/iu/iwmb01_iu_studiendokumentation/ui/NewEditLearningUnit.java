@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import de.iu.iwmb01_iu_studiendokumentation.R;
 import de.iu.iwmb01_iu_studiendokumentation.db.LearningUnitDataSource;
 import de.iu.iwmb01_iu_studiendokumentation.model.Course;
+import de.iu.iwmb01_iu_studiendokumentation.model.LearningEffort;
 import de.iu.iwmb01_iu_studiendokumentation.model.LearningUnit;
 
 public class NewEditLearningUnit extends AppCompatActivity {
@@ -41,6 +43,11 @@ public class NewEditLearningUnit extends AppCompatActivity {
         mode = getIntent().getStringExtra("MODE");
         course = (Course) getIntent().getSerializableExtra("COURSE_OBJECT");
 
+        if (savedInstanceState != null) {
+            course = (Course) savedInstanceState.getSerializable("COURSE_OBJECT");
+            learningUnit = (LearningUnit) savedInstanceState.getSerializable("LEARNING_UNIT_OBJECT");
+        }
+
         learningUnitTitleEditText = findViewById(R.id.learningUnitTitleEditText);
         planedLearningEffortHoursNumberPicker = findViewById(R.id.learningEffortPlannedHoursNumberPicker);
         planedLearningEffortMinutesNumberPicker = findViewById(R.id.learningEffortPlannedMinutesNumberPicker);
@@ -51,7 +58,9 @@ public class NewEditLearningUnit extends AppCompatActivity {
             Button newEditLearningUnitButton = findViewById(R.id.newEditLearningUnitButton);
             newEditLearningUnitButton.setText(R.string.save_learning_unit);
 
-            learningUnit = (LearningUnit) getIntent().getSerializableExtra("LEARNING_UNIT_OBJECT");
+            if (learningUnit == null) {
+                learningUnit = (LearningUnit) getIntent().getSerializableExtra("LEARNING_UNIT_OBJECT");
+            }
 
             int plannedLearningEffortHours = learningUnit.getPlannedLearningEffortHours();
             int plannedLearningEffortMinutes = learningUnit.getPlannedLearningEffortMinutes();
@@ -61,6 +70,14 @@ public class NewEditLearningUnit extends AppCompatActivity {
             learningUnitTitleEditText.setText(learningUnit.getLearningUnitTitle());
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("COURSE_OBJECT", course);
+        outState.putSerializable("LEARNING_UNIT_OBJECT", learningUnit);
     }
 
 
