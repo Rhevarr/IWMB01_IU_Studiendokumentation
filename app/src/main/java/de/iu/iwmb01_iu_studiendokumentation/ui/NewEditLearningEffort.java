@@ -246,6 +246,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     private void editSaveLearningEffort() {
@@ -261,6 +262,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
 
@@ -272,6 +274,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
 
     public void backButtonClicked(View view) {
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void deleteLearningEffortButtonClicked (View view) {
@@ -281,6 +284,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
     @Override
     protected void onDestroy() {

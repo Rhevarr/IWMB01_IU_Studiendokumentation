@@ -187,11 +187,13 @@ public class NewLearningEffortStopwatch extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
+            overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
         }
     }
 
     public void backButtonClicked(View view) {
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 intent.putExtra("COURSE_OBJECT", course);
                 view.getContext().startActivity(intent);
 
+                ((Activity) view.getContext()).overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
             }
         });
     }

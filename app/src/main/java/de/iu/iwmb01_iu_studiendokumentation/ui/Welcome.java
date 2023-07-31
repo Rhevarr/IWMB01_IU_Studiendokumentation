@@ -20,6 +20,7 @@ public class Welcome extends AppCompatActivity {
         Intent intent = new Intent(this, NewEditProfile.class);
         intent.putExtra("MODE","NEW");
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
 

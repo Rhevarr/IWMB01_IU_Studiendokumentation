@@ -183,6 +183,7 @@ public class CourseList extends AppCompatActivity {
         intent.putExtra("MODE", "EDIT");
         intent.putExtra("PROFILE_OBJECT", profile);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     public void addCourseButtonClicked(View view) {
@@ -190,6 +191,7 @@ public class CourseList extends AppCompatActivity {
         intent.putExtra("MODE", "NEW");
         intent.putExtra("PROFILE_OBJECT", profile);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     private void setProfileTextViews() {

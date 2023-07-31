@@ -70,6 +70,7 @@ public class NewEditProfile extends AppCompatActivity {
 
     public void backButtonClicked(View view) {
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
 public void saveProfileButtonClicked(View view) {
@@ -98,6 +99,8 @@ private void newSaveProfile() {
     Intent intent = new Intent(this, CourseList.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Nötig, damit nicht zurückgekehrt werden kann zu NewEditProfile und Welcome.
     startActivity(intent);
+    finish();
+    overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
 }
 
 private void editSaveProfile() {
@@ -116,6 +119,7 @@ private void editSaveProfile() {
         startActivity(intent);
 
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
 }
 
 private boolean areFieldsEmpty() {

@@ -12,7 +12,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/round_button"
         android:clickable="true"
         android:contentDescription="@string/stopwatchButton"
@@ -21,8 +21,8 @@
         android:padding="12dp"
         android:scaleType="fitCenter"
         app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/learningUnitDetailsBottomConstraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/createLearningEffortImageButton"
+        app:layout_constraintBottom_toTopOf="@+id/createLearningEffortImageButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm"
         app:tint="@color/white" />
@@ -74,7 +74,7 @@
         android:maxLines="1"
         android:text="@string/planned_dp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/stopwatchImageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningUnitTitleTextView" />
 
@@ -89,7 +89,7 @@
         android:maxLines="1"
         android:text="@string/current_dp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/createLearningEffortImageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learningEffortPlannedTextView" />
 

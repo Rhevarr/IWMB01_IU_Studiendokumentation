@@ -80,10 +80,12 @@ public class CourseDetails extends AppCompatActivity {
         intent.putExtra("MODE", "EDIT");
         intent.putExtra("COURSE_OBJECT", course);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     public void backButtonClicked(View view) {
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void deleteCourseButtonClicked (View view) {
@@ -95,6 +97,7 @@ public class CourseDetails extends AppCompatActivity {
 
         courseDataSource.close();
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void addLearningUnitButtonClicked(View view) {
@@ -102,6 +105,7 @@ public class CourseDetails extends AppCompatActivity {
         intent.putExtra("MODE", "NEW");
         intent.putExtra("COURSE_OBJECT", course);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     private void initializeRecyclerView() {

@@ -71,7 +71,7 @@
     <string name="learning_effort_planned">Geplanter Lernaufwand</string>
     <string name="sdf_standard_format_date">yyyy-MM-dd HH:mm:ss</string>
     <string name="sdf_date_format">EEEE, d. MMMM yyyy</string>
-    <string name="sdf_time_format">H:mm Uhr</string>
+    <string name="sdf_time_format">H:mm \'Uhr\'</string>
     <string name="date_dp">Datum: %s</string>
     <string name="time_dp">Uhrzeit: %s</string>
     <string name="continue_timer">Weiter</string>

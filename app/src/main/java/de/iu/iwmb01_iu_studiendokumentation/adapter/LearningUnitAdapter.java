@@ -1,5 +1,6 @@
 package de.iu.iwmb01_iu_studiendokumentation.adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
                 intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
                 view.getContext().startActivity(intent);
 
+                ((Activity) view.getContext()).overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
             }
         });
     }

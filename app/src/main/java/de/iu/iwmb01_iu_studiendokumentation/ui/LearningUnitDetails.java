@@ -84,10 +84,12 @@ public class LearningUnitDetails extends AppCompatActivity {
         intent.putExtra("MODE", "EDIT");
         intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     public void backButtonClicked(View view) {
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void deleteLearningUnitButtonClicked (View view) {
@@ -99,6 +101,7 @@ public class LearningUnitDetails extends AppCompatActivity {
 
         learningUnitDataSource.close();
         finish();
+        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void addLearningEffortButtonClicked(View view) {
@@ -106,6 +109,7 @@ public class LearningUnitDetails extends AppCompatActivity {
         intent.putExtra("MODE", "NEW");
         intent.putExtra("LEARNING_UNIT_OBJECT", learningUnit);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     private void initializeRecyclerView() {
@@ -135,6 +139,7 @@ public class LearningUnitDetails extends AppCompatActivity {
         intent.putExtra("LEARNING_EFFORT_SUM_HOURS", sumHours);
         intent.putExtra("LEARNING_EFFORT_SUM_MINUTES", sumMinutes);
         startActivity(intent);
+        overridePendingTransition(R.anim.animation_slide_right_in, R.anim.animation_slide_left_in);
     }
 
     @Override
