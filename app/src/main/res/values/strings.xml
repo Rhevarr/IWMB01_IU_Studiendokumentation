@@ -74,7 +74,14 @@
     <string name="date_dp">Date: %s</string>
     <string name="time_dp">Time: %s</string>
     <string name="continue_timer">Continue</string>
-    <string name="toast_error_stopwatch_running">The stopwatch is still running!</string>
-    <string name="toast_error_stopwatch_empty">The stopwatch hasn\'t started yet</string>
+    <string name="toast_error_stopwatch_running">Stopwatch is still running!</string>
+    <string name="toast_error_stopwatch_empty">Stopwatch hasn\'t started yet</string>
+    <string name="toast_stopwatch_started">Stopwatch started!</string>
+    <string name="alert_dialog_yes">Yes</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_deletion_title">Confirm deletion</string>
+    <string name="alert_dialog_deletion_question_course">Do you really want to delete this course?\n\nTitle: %s</string>
+    <string name="alert_dialog_deletion_question_learning_unit">Do you really want to delete this learning unit?\n\nTitle: %s</string>
+    <string name="alert_dialog_deletion_question_learning_effort">Do you really want to delete this learning effort?</string>
 
 </resources>

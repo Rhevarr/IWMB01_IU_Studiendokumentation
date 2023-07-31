@@ -75,7 +75,14 @@
     <string name="date_dp">Datum: %s</string>
     <string name="time_dp">Uhrzeit: %s</string>
     <string name="continue_timer">Weiter</string>
-    <string name="toast_error_stopwatch_running">Die Stoppuhr läuft noch!</string>
-    <string name="toast_error_stopwatch_empty">Die Stoppuhr wurde noch nicht gestartet</string>
+    <string name="toast_error_stopwatch_running">Stoppuhr läuft noch!</string>
+    <string name="toast_error_stopwatch_empty">Stoppuhr wurde noch nicht gestartet</string>
+    <string name="toast_stopwatch_started">Stoppuhr gestartet!</string>
+    <string name="alert_dialog_yes">Ja</string>
+    <string name="alert_dialog_cancel">Abbrechen</string>
+    <string name="alert_dialog_deletion_title">Löschung bestätigen</string>
+    <string name="alert_dialog_deletion_question_course">Möchtest du diesen Kurs wirklich löschen?/n/nTitel: %s</string>
+    <string name="alert_dialog_deletion_question_learning_unit">Möchtest du diese Lerneinheit wirklich löschen?/n/nTitel: %s</string>
+    <string name="alert_dialog_deletion_question_learning_effort">Möchtest du diesen Lernaufwand wirklich löschen?</string>
 
 </resources>

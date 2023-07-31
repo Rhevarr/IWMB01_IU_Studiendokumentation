@@ -1,13 +1,18 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -76,6 +81,14 @@ public class NewEditLearningEffort extends AppCompatActivity {
             learningUnit = (LearningUnit) savedInstanceState.getSerializable("LEARNING_UNIT_OBJECT");
             learningEffort = (LearningEffort) savedInstanceState.getSerializable("LEARNING_EFFORT_OBJECT");
         }
+
+        findViewById(R.id.newEditLearningEffortConstraintLayout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                hideKeyboard(view);
+                return true;
+            }
+        });
 
         if(mode.equals("NEW")) {
             ImageButton learningEffortDeleteButton = findViewById(R.id.deleteLearningEffortButton);
@@ -277,7 +290,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
-    public void deleteLearningEffortButtonClicked (View view) {
+    private void deleteLearningEffort(){
         learningEffortDataSource.removeLearningEffort(learningEffort);
 
         String message = getResources().getString(R.string.toast_learning_effort_deleted);
@@ -290,5 +303,32 @@ public class NewEditLearningEffort extends AppCompatActivity {
     protected void onDestroy() {
         learningEffortDataSource.close();
         super.onDestroy();
+    }
+
+    // Methode zum Verbergen der Tastatur
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void deleteLearningEffortButtonClicked(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.alert_dialog_deletion_title);
+        builder.setMessage(R.string.alert_dialog_deletion_question_learning_effort);
+
+        builder.setNegativeButton(R.string.alert_dialog_cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setPositiveButton(R.string.alert_dialog_yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                deleteLearningEffort();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

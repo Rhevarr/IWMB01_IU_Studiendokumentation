@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
 
         // Der OnClickListener funktioniert so wie das onClick-Attribut bei den Buttons.
         // Hierbei beziehe ich mich jedoch auf die ImageView innerhalb des Items.
-        holder.learningUnitDetailsImageView.setOnClickListener(new View.OnClickListener() {
+        holder.learningUnitCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -64,6 +65,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
         private final TextView titleTextView;
         private final TextView plannedLearningEffortTextView;
         private final ImageView learningUnitDetailsImageView;
+        private final CardView learningUnitCardView;
 
         public LearningUnitViewHolder(View view) {
             super(view);
@@ -71,6 +73,7 @@ public class LearningUnitAdapter extends RecyclerView.Adapter<LearningUnitAdapte
             titleTextView =  view.findViewById(R.id.learningUnitTitleTextView);
             plannedLearningEffortTextView = view.findViewById(R.id.learningUnitPlannedEffortTextView);
             learningUnitDetailsImageView = view.findViewById(R.id.itemLearningUnitDetailsImageView);
+            learningUnitCardView = view.findViewById(R.id.itemLearningUnitCardView);
         }
     }
 }

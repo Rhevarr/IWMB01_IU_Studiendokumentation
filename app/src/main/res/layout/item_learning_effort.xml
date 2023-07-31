@@ -51,15 +51,17 @@
 
         <ImageView
             android:id="@+id/itemLearningEffortDetailsImageView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:rotation="45"
-            android:scaleX="-1"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/change_circle_vector" />
+            app:srcCompat="@drawable/edit_icon"
+            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

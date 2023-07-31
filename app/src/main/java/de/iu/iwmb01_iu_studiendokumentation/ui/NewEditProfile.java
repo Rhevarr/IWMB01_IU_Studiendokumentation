@@ -3,10 +3,13 @@ package de.iu.iwmb01_iu_studiendokumentation.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,6 +48,14 @@ public class NewEditProfile extends AppCompatActivity {
         if (savedInstanceState != null) {
             profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");
         }
+
+        findViewById(R.id.EditNewProfileConstraintLayout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                hideKeyboard(view);
+                return true;
+            }
+        });
 
     if(mode.equals("EDIT")) {
 
@@ -131,5 +142,11 @@ private boolean areFieldsEmpty() {
     protected void onDestroy() {
         profileDataSource.close();
         super.onDestroy();
+    }
+
+    // Methode zum Verbergen der Tastatur
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

@@ -3,10 +3,13 @@ package de.iu.iwmb01_iu_studiendokumentation.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -52,6 +55,14 @@ public class NewEditLearningUnit extends AppCompatActivity {
         planedLearningEffortMinutesNumberPicker = findViewById(R.id.learningEffortPlannedMinutesNumberPicker);
 
         initializeNumberPickerValues();
+
+        findViewById(R.id.newEditLearningUnitConstraintLayout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                hideKeyboard(view);
+                return true;
+            }
+        });
 
         if(mode.equals("EDIT")) {
             Button newEditLearningUnitButton = findViewById(R.id.newEditLearningUnitButton);
@@ -164,5 +175,11 @@ public class NewEditLearningUnit extends AppCompatActivity {
     protected void onDestroy() {
         learningUnitDataSource.close();
         super.onDestroy();
+    }
+
+    // Methode zum Verbergen der Tastatur
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

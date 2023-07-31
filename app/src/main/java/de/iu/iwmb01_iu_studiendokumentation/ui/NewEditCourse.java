@@ -3,10 +3,13 @@ package de.iu.iwmb01_iu_studiendokumentation.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +61,14 @@ public class NewEditCourse extends AppCompatActivity {
             profile = (Profile) savedInstanceState.getSerializable("PROFILE_OBJECT");
             course = (Course) savedInstanceState.getSerializable("COURSE_OBJECT");
         }
+
+        findViewById(R.id.NewEditCourseConstraintLayout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                hideKeyboard(view);
+                return true;
+            }
+        });
 
         if(mode.equals("EDIT")) {
             Button newEditCourseButton = findViewById(R.id.newEditCourseButton);
@@ -161,5 +172,11 @@ public class NewEditCourse extends AppCompatActivity {
     protected void onDestroy() {
         courseDataSource.close();
         super.onDestroy();
+    }
+
+    // Methode zum Verbergen der Tastatur
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

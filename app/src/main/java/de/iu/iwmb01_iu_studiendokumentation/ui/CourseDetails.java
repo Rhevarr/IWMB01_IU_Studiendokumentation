@@ -1,10 +1,12 @@
 package de.iu.iwmb01_iu_studiendokumentation.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,8 @@ public class CourseDetails extends AppCompatActivity {
 
     Course course;
     private ArrayList<LearningUnit> learningUnits;
+
+    private boolean deletionConfirmed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,16 +92,17 @@ public class CourseDetails extends AppCompatActivity {
         overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
-    public void deleteCourseButtonClicked (View view) {
-        CourseDataSource courseDataSource = new CourseDataSource(this);
-        courseDataSource.removeCourse(course);
+    public void deleteCourse () {
 
-        String message = getResources().getString(R.string.toast_course_deleted);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            CourseDataSource courseDataSource = new CourseDataSource(this);
+            courseDataSource.removeCourse(course);
 
-        courseDataSource.close();
-        finish();
-        overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
+            String message = getResources().getString(R.string.toast_course_deleted);
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+            courseDataSource.close();
+            finish();
+            overridePendingTransition(R.anim.animation_slide_right_out, R.anim.animation_slide_left_out);
     }
 
     public void addLearningUnitButtonClicked(View view) {
@@ -122,6 +127,26 @@ public class CourseDetails extends AppCompatActivity {
 
         learningUnitDataSource.close();
         super.onDestroy();
+    }
+    public void deleteCourseButtonClicked(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.alert_dialog_deletion_title);
+        builder.setMessage(String.format(getString(R.string.alert_dialog_deletion_question_course), course.getCourseTitle()));
+
+        builder.setNegativeButton(R.string.alert_dialog_cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setPositiveButton(R.string.alert_dialog_yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                deleteCourse();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

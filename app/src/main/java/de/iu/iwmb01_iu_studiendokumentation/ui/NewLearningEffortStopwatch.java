@@ -105,8 +105,12 @@ public class NewLearningEffortStopwatch extends AppCompatActivity {
 
             stopwatchChronometer.start();
             isStopwatchRunning = true;
+
             resetState = false;
             updateStopwatchButtonTexts();
+
+            String message = getResources().getString(R.string.toast_stopwatch_started);
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
     }
 

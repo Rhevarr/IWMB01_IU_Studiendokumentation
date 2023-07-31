@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -49,7 +50,7 @@ public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAd
 
         // Der OnClickListener funktioniert so wie das onClick-Attribut bei den Buttons.
         // Hierbei beziehe ich mich jedoch auf die ImageView innerhalb des Items.
-        holder.learningEffortEditImageView.setOnClickListener(new View.OnClickListener() {
+        holder.learningEffortCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -72,6 +73,7 @@ public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAd
         private final TextView learningEffortDateTextView;
         private final TextView learningEffortActualTextView;
         private final ImageView learningEffortEditImageView;
+        private final CardView learningEffortCardView;
 
         public LearningEffortViewHolder(View view) {
             super(view);
@@ -79,6 +81,7 @@ public class LearningEffortAdapter extends RecyclerView.Adapter<LearningEffortAd
             learningEffortDateTextView =  view.findViewById(R.id.itemLearningEffortTimestampTextView);
             learningEffortActualTextView = view.findViewById(R.id.itemActualLearningEffortTextView);
             learningEffortEditImageView = view.findViewById(R.id.itemLearningEffortDetailsImageView);
+            learningEffortCardView = view.findViewById(R.id.itemLearningEffortCardView);
         }
     }
 }
