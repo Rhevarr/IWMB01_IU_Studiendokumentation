@@ -5,20 +5,20 @@ import java.io.Serializable;
 
 public class Profile implements Serializable {
 
-    private final int profileID;
+    private final int profileId;
     private String firstName;
     private String lastName;
     private String studyProgram;
 
-    public Profile(int profileID, String firstName, String lastName, String studyProgram) {
-        this.profileID = profileID;
+    public Profile(int profileId, String firstName, String lastName, String studyProgram) {
+        this.profileId = profileId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.studyProgram = studyProgram;
     }
 
     public int getProfileID() {
-        return profileID;
+        return profileId;
     }
     public String getFirstName() {
         return firstName;
