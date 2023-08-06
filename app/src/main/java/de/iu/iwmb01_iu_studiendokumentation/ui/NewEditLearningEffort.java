@@ -161,7 +161,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int selectedYear, int selectedMonth, int selectedDay) {
 
-                        tempDateString = (selectedYear + "-" + selectedMonth + "-" + selectedDay);
+                        tempDateString = (selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay);
                         updateLearningEffortDate();
                     }
                 }, year, month, day);
