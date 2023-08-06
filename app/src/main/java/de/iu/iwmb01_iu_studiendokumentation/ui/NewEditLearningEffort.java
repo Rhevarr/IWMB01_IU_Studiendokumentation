@@ -142,7 +142,7 @@ public class NewEditLearningEffort extends AppCompatActivity {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
-        tempDateString = year + "-" + month + "-" + day;
+        tempDateString = year + "-" + (month + 1) + "-" + day;
         tempTimeString = hour + ":" + minute;
     }
 
