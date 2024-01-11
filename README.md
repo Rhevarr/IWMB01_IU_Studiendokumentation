@@ -1,8 +1,7 @@
-# IWMB01 - IU Study documentation-App
+# Study Documentation
 
-IU Study Documentation is an App-Prototype developed as part of the Android Mobile Software Engineering-Course at IU International University of Applied Sciences.
-
-(IWMB01 Case Study - Task 2: Study Documentation)
+Study Documentation is an App-Prototype, which students can use to organize and document their learning progress.
+This Application was developed as part of the Android Mobile Software Engineering-Course at IU International University of Applied Sciences.
 
 <img src="https://github.com/eckesru/IWMB01_IU_Studiendokumentation/assets/38622979/0bb86832-502f-4ddd-a16e-fede01f1a073" width="320">
 <img src="https://github.com/eckesru/IWMB01_IU_Studiendokumentation/assets/38622979/c3ad9390-086f-477f-836d-175f444f7acb" width="320">
